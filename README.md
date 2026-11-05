@@ -1,26 +1,12 @@
-# Roadmap Studio v0.2 - GitHub Pages
+# Roadmap Studio v0.4
 
-This package is configured for a GitHub repository named `roadmap-studio`.
+Privacy-safe Gantt release using the latest four ServiceNow Excel exports.
 
-## Upload
-Upload the CONTENTS of this folder to the root of the GitHub repository, preserving the folder structure, especially:
+## Replace GitHub files
+Upload all contents to the repository root, preserving `.github/workflows/deploy.yml`.
+If the repository name is not `roadmap-studio`, change `base` in `vite.config.js`.
 
-- `.github/workflows/deploy.yml`
-- `public/roadmap_import.csv`
-- `src/main.jsx`
-- `src/style.css`
+## Privacy approach
+Actual source titles are excluded. Each source record receives a stable-in-this-build alias such as `Project FMS 23`. The real project number remains visible. Cross-pillar memberships show the originating pillar as an italic suffix, for example `Project FMS 23 *FMS*` on BI.
 
-## Enable GitHub Pages
-1. Open repository Settings.
-2. Select Pages.
-3. Under Build and deployment, choose Source: GitHub Actions.
-4. Open Actions and run `Deploy Roadmap Studio to GitHub Pages`, or make any commit to `main`.
-
-Expected URL:
-`https://YOUR-GITHUB-USER.github.io/roadmap-studio/`
-
-## Different repository name
-If the repository is not exactly `roadmap-studio`, edit `vite.config.js` and change:
-`base: '/roadmap-studio/'`
-to:
-`base: '/YOUR-REPOSITORY-NAME/'`
+`public/privacy_mapping.csv` is included for internal verification. Remove it before deployment if the alias-to-number mapping itself should not be downloadable. The deployed UI does not load this CSV.

@@ -1,0 +1,451 @@
+﻿number,type,alias,origin,impacted,start,end,progress,status,risk,campus,fc
+PRJ0024050,Project,Project FMS 1,FMS,FMS,2026-08-03,2026-12-08,54.29,Work in Progress,Green,UTRGV,Purchasing / ePro
+PRJ0035149,Project,Project SWIS 1,SWIS,SWIS,2027-01-18,2027-05-18,0.0,Open,Green,UTPB,Systemwide Information Services (SWIS)
+PRJ0035586,Project,Project SWIS 2,SWIS,SWIS,2026-12-01,2027-02-28,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0010058,Project,Project FMS 2,FMS,FMS,2026-07-10,2027-02-19,50.0,Work in Progress,Green,UTRGV,General Ledger
+PRJ0035137,Project,Project BI 1,BI,BI,2026-11-02,2026-12-18,0.0,Pending,Green,,Business Intelligence
+PRJ0023401,Project,Project BI 2,BI,BI,2026-06-01,2026-11-30,94.44,Work in Progress,Green,UTT,Business Intelligence
+PRJ0030919,Project,Project FMS 3,FMS,"FMS, BI",2026-09-02,2026-12-04,40.98,Work in Progress,Green,UTSHARE,Purchasing / ePro
+PRJ0033580,Project,Project BI 3,BI,FMS,2026-10-01,2026-11-20,0.0,Work in Progress,Green,UTSHARE,Business Intelligence
+PRJ0024261,Project,Project SWIS 3,SWIS,SWIS,2026-06-08,2026-12-23,45.58,Work in Progress,Green,UTS,Systemwide Information Services (SWIS)
+PRJ0036740,Project,Project UNASSIGNED 1,UNASSIGNED,UNASSIGNED,2026-11-02,2026-12-14,0.0,Pending,No status,,
+PRJ0028470,Project,Project SIS SERVICES 1,SIS SERVICES,SIS SERVICES,2026-08-05,2026-08-05,95.0,Work in Progress,No status,,Intelligent Automation Services (IAS)
+PRJ0033427,Project,Project SIS SERVICES 2,SIS SERVICES,"FMS, HCM",2026-09-01,2027-01-22,15.34,Work in Progress,Green,UTSHARE,Shared Information Services (SIS)
+PRJ0030361,Project,Project FMS 4,FMS,FMS,2027-01-04,2027-05-31,0.0,Pending,No status,UTPB,Grants Management
+PRJ0027136,Project,Project SIS SERVICES 3,SIS SERVICES,SIS SERVICES,2026-07-16,2026-08-28,0.0,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0011922,Project,Project OTIS 1,OTIS,INFRA,2026-02-18,2027-03-17,30.0,Work in Progress,Green,UTS,Tech and Info Services (OTIS)
+PRJ0036390,Project,Project SWIS 4,SWIS,SWIS,2026-11-15,2027-05-01,0.0,Open,Green,TACC,Systemwide Information Services (SWIS)
+PRJ0031450,Project,Project FMS 5,FMS,FMS,2027-01-04,2027-04-30,0.0,Pending,No status,"UTA, UTPB, UTSA, UTHCT, UTT, UTEP",Accounts Payable / Travel & Expense
+PRJ0032840,Project,Project SIS SERVICES 4,SIS SERVICES,"HCM, FMS, CS",2026-09-17,2027-01-22,12.98,Work in Progress,Green,UTD,Shared Information Services (SIS)
+PRJ0036384,Project,Project SWIS 5,SWIS,SWIS,2027-03-01,2027-04-30,0.0,Open,Green,UTT,Systemwide Information Services (SWIS)
+PRJ0010083,Project,Project FMS 6,FMS,FMS,2025-06-30,2026-11-30,75.0,Work in Progress,Green,UTEP,Accounts Payable / Travel & Expense
+PRJ0036386,Project,Project SWIS 6,SWIS,SWIS,2026-12-01,2028-08-30,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0024033,Project,Project FMS 7,FMS,FMS,2026-07-13,2026-12-11,2.78,Work in Progress,Green,"UTSA, UTA, UTEP",Accounts Payable / Travel & Expense
+PRJ0034461,Project,Project BI 4,BI,"BI, CS",2026-10-13,2026-12-18,0.0,Work in Progress,Green,UTT,Business Intelligence
+PRJ0031547,Project,Project SWIS 7,SWIS,SWIS,2026-09-01,2026-10-06,0.0,Work in Progress,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0035589,Project,Project SWIS 8,SWIS,SWIS,2026-12-01,2027-06-30,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0035602,Project,Project SWIS 9,SWIS,SWIS,2026-11-01,2026-12-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0036393,Project,Project SWIS 10,SWIS,SWIS,2026-10-02,2027-01-30,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0030022,Project,Project SIS SERVICES 5,SIS SERVICES,IAS,2026-09-01,2027-08-31,17.0,Work in Progress,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTHSCH, UTHSCSA, UTMDACCH, UTSWMCD",Intelligent Automation Services (IAS)
+PRJ0036397,Project,Project SWIS 11,SWIS,SWIS,2026-12-15,2027-06-30,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0027427,Project,Project HCM 1,HCM,HCM,2026-07-21,2027-10-19,0.31,Work in Progress,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Payroll
+PRJ0036400,Project,Project SWIS 12,SWIS,SWIS,2026-12-15,2027-07-01,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0034407,Project,Project BI 5,BI,"CS, BI",2026-10-13,2027-01-15,0.0,Work in Progress,Green,UTT,Business Intelligence
+PRJ0035609,Project,Project SWIS 13,SWIS,SWIS,2026-11-01,2027-08-31,0.0,Open,Green,UTS,Systemwide Information Services (SWIS)
+PRJ0036403,Project,Project SWIS 14,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0010090,Project,Project HCM 2,HCM,HCM,2025-06-01,2026-11-05,80.0,Work in Progress,Green,UTRGV,Commitment Accounting
+PRJ0035612,Project,Project SWIS 15,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,SFA,Systemwide Information Services (SWIS)
+PRJ0035615,Project,Project SWIS 16,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,SFA,Systemwide Information Services (SWIS)
+PRJ0028206,Project,Project SIS SERVICES 6,SIS SERVICES,IAS,2026-08-03,2026-10-02,55.0,Work in Progress,Green,UTS,Intelligent Automation Services (IAS)
+PRJ0031453,Project,Project FMS 8,FMS,FMS,2027-01-11,2027-08-09,0.0,Pending,Green,UTRGV,General Ledger
+PRJ0031454,Project,Project FMS 9,FMS,FMS,2027-01-11,2027-04-20,0.0,Pending,Green,UTRGV,General Ledger
+PRJ0036406,Project,Project SWIS 17,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0035619,Project,Project SWIS 18,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,SFA,Systemwide Information Services (SWIS)
+PRJ0030498,Project,Project B&CS 1,B&CS,"B&CS, SYSOPS, HCM, FMS, CS, OTISCS, INFRA, ARDC, ISO",2026-08-24,2027-02-18,33.15,Work in Progress,Green,UTS,ServiceNow
+PRJ0026512,Project,Project HCM 3,HCM,"HCM, FMS, CS",2026-07-09,2026-11-20,0.0,Work in Progress,Green,"UTT, UTHCT",Human Resources
+PRJ0035141,Project,Project SWIS 19,SWIS,SWIS,2026-11-01,2027-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0031100,Project,Project SIS SERVICES 7,SIS SERVICES,PMO,2026-08-31,2027-08-27,2.0,Work in Progress,Green,UTS,Shared Information Services (SIS)
+PRJ0010093,Project,Project FMS 10,FMS,FMS,2025-05-01,2026-11-23,80.0,Work in Progress,Green,UTA,Accounts Payable / Travel & Expense
+PRJ0035098,Project,Project SWIS 20,SWIS,SWIS,2027-05-01,2028-07-31,0.0,Open,Green,UTA,Systemwide Information Services (SWIS)
+PRJ0035103,Project,Project SWIS 21,SWIS,SWIS,2027-05-01,2028-07-31,0.0,Open,Green,UTA,Systemwide Information Services (SWIS)
+PRJ0035622,Project,Project SWIS 22,SWIS,SWIS,2026-12-15,2027-08-31,0.0,Open,Green,SFA,Systemwide Information Services (SWIS)
+PRJ0036411,Project,Project SWIS 23,SWIS,SWIS,2027-03-01,2028-12-31,0.0,Open,Green,UTT,Systemwide Information Services (SWIS)
+PRJ0018715,Project,Project FMS 11,FMS,FMS,2026-04-14,2027-01-08,35.36,Work in Progress,Green,UTS,Accounts Receivable / Billing
+PRJ0036534,Project,Project HCM 4,HCM,HCM,2026-11-02,2027-08-31,0.5,Work in Progress,Green,UTRGV,Human Resources
+PRJ0029655,Project,Project SIS SERVICES 8,SIS SERVICES,IAS,2025-09-01,2026-11-30,50.0,Work in Progress,Green,UTPB,Intelligent Automation Services (IAS)
+PRJ0010094,Project,Project HCM 5,HCM,HCM,2025-05-01,2027-06-30,94.94,Work in Progress,Green,"UTA, UTEP, UTSA, UTT, UTPB, UTS, UTRGV",Absence Management
+PRJ0026464,Project,Project HCM 6,HCM,HCM,2026-07-01,2027-05-31,6.08,Work in Progress,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTSHARE, UTS",Human Resources
+PRJ0032383,Project,Project SWIS 24,SWIS,SWIS,2026-09-14,2026-10-07,0.0,Work in Progress,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0036414,Project,Project SWIS 25,SWIS,SWIS,2027-06-01,2028-12-28,0.0,Open,Green,UTT,Systemwide Information Services (SWIS)
+PRJ0010071,Project,Project FMS 12,FMS,FMS,2026-09-01,2027-09-10,0.0,Pending,Yellow,"UTA, UTT, UTHCT",General Ledger
+PRJ0028194,Project,Project SIS SERVICES 9,SIS SERVICES,SIS SERVICES,2026-08-03,2026-09-16,47.37,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0028293,Project,Project SIS SERVICES 10,SIS SERVICES,SIS SERVICES,2026-08-03,2026-08-03,8.5,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0030924,Project,Project FMS 13,FMS,FMS,2026-12-01,2027-05-31,0.0,Pending,No status,"UTA, UTT, UTHCT, UTS, UTHSCSA, UTPB",Purchasing / ePro
+PRJ0036409,Project,Project SWIS 26,SWIS,SWIS,2027-04-05,2030-05-31,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0033417,Project,Project SIS SERVICES 11,SIS SERVICES,IAS,2026-06-10,2026-08-31,90.0,Work in Progress,Green,UTS,Intelligent Automation Services (IAS)
+PRJ0035109,Project,Project SWIS 27,SWIS,SWIS,2027-03-01,2027-08-01,0.0,Open,Green,UTPB,Systemwide Information Services (SWIS)
+PRJ0032833,Project,Project SIS SERVICES 12,SIS SERVICES,CS,2026-09-17,2027-01-22,1.05,Work in Progress,Green,UTT,Shared Information Services (SIS)
+PRJ0034088,Project,Project FMS 14,FMS,FMS,2026-12-07,2027-02-09,0.0,Pending,No status,UTSA,Accounts Payable / Travel & Expense
+PRJ0028240,Project,Project HCM 7,HCM,HCM,2026-04-09,2026-05-08,10.0,Pending,Green,UTA,Time and Labor
+PRJ0030749,Project,Project SIS SERVICES 13,SIS SERVICES,SIS SERVICES,2026-08-01,2027-05-31,25.0,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0035114,Project,Project SWIS 28,SWIS,SWIS,2027-04-01,2027-09-01,0.0,Open,Green,UTPB,Systemwide Information Services (SWIS)
+PRJ0028199,Project,Project SIS SERVICES 14,SIS SERVICES,IAS,2026-08-03,2026-12-31,47.37,Work in Progress,Green,UTRGV,Intelligent Automation Services (IAS)
+PRJ0032829,Project,Project SIS SERVICES 15,SIS SERVICES,CS,2026-09-17,2027-01-22,3.07,Work in Progress,Green,UTPB,Shared Information Services (SIS)
+PRJ0030722,Project,Project SIS SERVICES 16,SIS SERVICES,SIS SERVICES,2026-09-01,2027-08-31,8.0,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0036419,Project,Project SWIS 29,SWIS,SWIS,2027-03-01,2028-12-31,0.0,Open,Green,UTT,Systemwide Information Services (SWIS)
+PRJ0011925,Project,Project OTIS 2,OTIS,INFRA,2026-05-04,2026-08-31,0.0,Pending,Yellow,UTS,Tech and Info Services (OTIS)
+PRJ0017139,Project,Project CS 1,CS,CS,2026-01-26,2026-11-20,89.12,Work in Progress,Green,UTT,Student Systems
+PRJ0024032,Project,Project FMS 15,FMS,FMS,2026-11-02,2026-12-04,4.16,Pending,Green,UTSA,Accounts Payable / Travel & Expense
+PRJ0027213,Project,Project OTIS 3,OTIS,"OTIS, OTISCS",2026-07-20,2026-11-30,0.0,Work in Progress,Green,UTS,Tech and Info Services (OTIS)
+PRJ0014123,Project,Project HCM 8,HCM,HCM,2026-03-01,2027-03-31,80.0,Work in Progress,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0035122,Project,Project SWIS 30,SWIS,SWIS,2028-05-01,2028-07-03,0.0,Open,Green,UTPB,Systemwide Information Services (SWIS)
+PRJ0010102,Project,Project HCM 9,HCM,HCM,2025-07-01,2026-12-31,75.0,Work in Progress,Green,UTS,Human Resources
+PRJ0036425,Project,Project SWIS 31,SWIS,SWIS,2026-12-15,2029-04-30,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0028203,Project,Project SIS SERVICES 17,SIS SERVICES,IAS,2026-08-03,2027-03-31,15.0,Work in Progress,Green,UTA,Intelligent Automation Services (IAS)
+PRJ0030727,Project,Project SIS SERVICES 18,SIS SERVICES,IAS,2026-09-01,2027-08-31,0.0,Work in Progress,Green,UTS,Intelligent Automation Services (IAS)
+PRJ0036431,Project,Project SWIS 32,SWIS,SWIS,2026-12-15,2029-04-30,0.0,Open,Green,UTAUS,Systemwide Information Services (SWIS)
+PRJ0036432,Project,Project SWIS 33,SWIS,SWIS,2027-03-01,2027-05-31,0.0,Pending,No status,UTRGV,Systemwide Information Services (SWIS)
+PRJ0013986,Project,Project FMS 16,FMS,FMS,2026-01-02,2026-11-30,48.06,Work in Progress,Green,UTEP,Accounts Payable / Travel & Expense
+PRJ0012808,Project,Project HCM 10,HCM,HCM,2026-04-29,2027-02-12,75.0,Work in Progress,Green,UTA,Human Resources
+PRJ0027190,Project,Project SIS SERVICES 19,SIS SERVICES,SIS SERVICES,2026-06-01,2026-08-11,97.58,Work in Progress,Green,,Intelligent Automation Services (IAS)
+PRJ0031581,Project,Project BI 6,BI,BI,2026-10-12,2027-04-13,8.54,Work in Progress,Green,"UTRGV, UTS",Business Intelligence
+PRJ0026662,Project,Project SIS SERVICES 20,SIS SERVICES,"SI, B&CS",2026-07-07,2026-12-18,80.0,Work in Progress,Green,UTS,Shared Information Services (SIS)
+PRJ0036439,Project,Project SWIS 34,SWIS,SWIS,2027-01-04,2027-04-30,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0018309,Project,Project OTIS 4,OTIS,OTISCS,2026-04-13,2026-10-16,11.65,Work in Progress,Green,UTS,Tech and Info Services (OTIS)
+PRJ0036443,Project,Project SWIS 35,SWIS,SWIS,2026-10-12,2026-12-31,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0033092,Project,Project SWIS 36,SWIS,SWIS,2027-04-01,2027-04-10,0.0,Work in Progress,Green,TACC,Systemwide Information Services (SWIS)
+PRJ0020133,Project,Project OTIS 5,OTIS,OTIS,2026-06-01,2026-10-29,42.37,Work in Progress,Green,UTS,Tech and Info Services (OTIS)
+PRJ0026999,Project,Project FMS 17,FMS,FMS,2026-10-05,2027-03-31,20.0,Work in Progress,Green,UTRGV,General Ledger
+PRJ0036452,Project,Project SWIS 37,SWIS,SWIS,2027-01-01,2027-12-01,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0035140,Project,Project SWIS 38,SWIS,SWIS,2026-11-01,2027-07-31,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0036456,Project,Project SWIS 39,SWIS,SWIS,2026-12-01,2027-04-30,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0024795,Project,Project ISO 1,ISO,ISO,2026-06-15,2026-09-14,0.0,Pending,Green,,Information Security (CISO)
+PRJ0035641,Project,Project SWIS 40,SWIS,SWIS,2026-11-01,2027-08-31,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0035628,Project,Project SWIS 41,SWIS,SWIS,2026-11-01,2027-08-31,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0035645,Project,Project SWIS 42,SWIS,SWIS,2026-11-01,2027-07-31,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0035107,Project,Project SWIS 43,SWIS,SWIS,2026-12-01,2027-06-30,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0035133,Project,Project SWIS 44,SWIS,SWIS,2027-02-01,2027-06-30,0.0,Work in Progress,Green,UTD,Systemwide Information Services (SWIS)
+PRJ0036460,Project,Project SWIS 45,SWIS,SWIS,2026-12-01,2027-09-30,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0035119,Project,Project SWIS 46,SWIS,SWIS,2027-05-01,2027-09-01,0.0,Open,Green,UTPB,Systemwide Information Services (SWIS)
+PRJ0020824,Project,Project HCM 11,HCM,HCM,2026-05-08,2026-12-18,5.0,Work in Progress,Green,"UTT, UTHCT",Human Resources
+PRJ0035232,Project,Project SYSOPS 1,SYSOPS,"CS, FMS, HCM, BI",2026-10-19,2026-11-16,1.73,Work in Progress,Yellow,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",System Operations - SIS
+PRJ0029819,Project,Project FMS 18,FMS,FMS,2026-10-02,2027-02-02,0.0,Pending,Green,"UTSA, UTA, UTT, UTPB, UTEP, UTHCT",Grants Management
+PRJ0032823,Project,Project SIS SERVICES 21,SIS SERVICES,CS,2026-09-17,2027-02-09,15.93,Work in Progress,Green,UTA,Shared Information Services (SIS)
+PRJ0036465,Project,Project SWIS 47,SWIS,SWIS,2026-11-15,2027-07-31,0.0,Open,Green,UTSA,Systemwide Information Services (SWIS)
+PRJ0025505,Project,Project HCM 12,HCM,HCM,2026-06-01,2027-07-01,5.0,Work in Progress,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT, UTSHARE",Human Resources
+PRJ0024031,Project,Project FMS 19,FMS,FMS,2026-07-13,2026-11-30,79.25,Work in Progress,Green,"UTEP, UTA, UTRGV, UTSA, UTT, UTPB, UTS",Accounts Payable / Travel & Expense
+PRJ0036469,Project,Project SWIS 48,SWIS,SWIS,2026-12-01,2027-08-30,0.0,Open,Green,UTSA,Systemwide Information Services (SWIS)
+PRJ0029820,Project,Project FMS 20,FMS,FMS,2026-09-24,2027-06-04,0.0,Work in Progress,Green,UTS,General Ledger
+PRJ0036472,Project,Project SWIS 49,SWIS,SWIS,2026-11-01,2028-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0036475,Project,Project SWIS 50,SWIS,SWIS,2027-01-01,2027-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0036478,Project,Project SWIS 51,SWIS,SWIS,2026-11-01,2028-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0036486,Project,Project SWIS 52,SWIS,SWIS,2026-12-01,2028-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0036483,Project,Project SWIS 53,SWIS,SWIS,2026-11-01,2027-08-31,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0028789,Project,Project SYSOPS 2,SYSOPS,"BI, CS, ISO, FMS, HCM, INFRA, OTISCS, PMO, SIS SERVICES, SYSOPS, OTIS",2026-09-01,2026-12-15,0.0,Pending,No status,"UTA, UTD, UTEP, UTRGV, UTT, UTSHARE, UTS, UTPB",System Operations - SIS
+PRJ0036706,Project,Project BI 7,BI,BI,2026-11-04,2026-12-18,0.0,Pending,Green,,Business Intelligence
+PRJ0027318,Project,Project FMS 21,FMS,"FMS, HCM, CS",2026-07-02,2027-02-15,15.88,Work in Progress,Green,"UTHCT, UTT",General Ledger
+PRJ0025948,Project,Project SIS SERVICES 22,SIS SERVICES,PMO,2026-06-29,2026-08-31,0.26,Work in Progress,Green,UTSHARE,Shared Information Services (SIS)
+PRJ0036423,Project,Project SWIS 54,SWIS,SWIS,2026-12-01,2027-05-31,0.0,Open,Green,UTRGV,Systemwide Information Services (SWIS)
+PRJ0033784,Project,Project HCM 13,HCM,HCM,2026-10-06,2027-02-01,25.0,Work in Progress,Green,UTS,Time and Labor
+PRJ0031451,Project,Project FMS 22,FMS,FMS,2026-10-01,2026-12-08,0.0,Work in Progress,Green,UTRGV,Grants Management
+PRJ0010110,Project,Project SIS SERVICES 23,SIS SERVICES,"SI, SYSOPS",2025-09-22,2026-10-30,32.34,Work in Progress,Green,"SFA, UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHSCH",Shared Information Services (SIS)
+PRJ0031772,Project,Project OTIS 6,OTIS,OTIS,2026-09-01,2026-12-31,41.3,Work in Progress,Green,UTS,Tech and Info Services (OTIS)
+PRJ0017916,Project,Project BI 8,BI,BI,2026-03-23,2026-11-12,74.67,Work in Progress,Green,UTRGV,Business Intelligence
+PRJ0030688,Project,Project HCM 14,HCM,HCM,2026-09-01,2027-03-31,50.0,Work in Progress,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTS, UTPB, UTHCT",Human Resources
+PRJ0011064,Project,Project CS 2,CS,CS,2026-01-01,2026-12-15,50.33,Work in Progress,Green,UTA,Student Systems
+PRJ0024703,Project,Project FMS 23,FMS,FMS,2026-06-01,2026-12-04,34.77,Work in Progress,Green,UTHCT,Accounts Receivable / Billing
+PRJ0032103,Project,Project SIS SERVICES 24,SIS SERVICES,"FMS, HCM",2026-09-17,2027-01-22,16.85,Work in Progress,Green,UTRGV,Shared Information Services (SIS)
+PRJ0024497,Project,Project ISO 2,ISO,ISO,2026-05-08,2027-04-16,23.89,Work in Progress,Green,UTS,Information Security (CISO)
+PRJ0035594,Project,Project SWIS 55,SWIS,SWIS,2026-12-01,2027-06-30,0.0,Open,Green,UTEP,Systemwide Information Services (SWIS)
+PRJ0015216,Project,Project B&CS 2,B&CS,PMO,2026-03-03,2026-06-30,100.0,Closed Complete,Green,UTS,ServiceNow
+PRJ0011105,Project,Project SIS SERVICES 25,SIS SERVICES,CS,2025-10-13,2026-03-16,100.0,Closed Complete,Green,UTT,Shared Information Services (SIS)
+PRJ0028320,Project,Project SIS SERVICES 26,SIS SERVICES,IAS,2025-09-01,2026-08-31,100.0,Closed Complete,No status,UTS,Intelligent Automation Services (IAS)
+PRJ0022125,Project,Project HCM 15,HCM,HCM,2026-05-19,2026-08-31,100.0,Closed Complete,Green,"UTHCT, UTA, UTEP, UTPB, UTS, UTSA, UTT, UTSHARE",Human Resources
+PRJ0021460,Project,Project SIS SERVICES 27,SIS SERVICES,PMO,2026-05-11,2026-07-20,100.0,Closed Complete,Green,"UTD, UTRGV, UTSA, UTT, UTPB, UTSHARE, UTA",Shared Information Services (SIS)
+PRJ0012175,Project,Project SYSOPS 3,SYSOPS,"FMS, HCM",2026-01-15,2026-07-24,99.86,Closed Complete,Green,"UTSHARE, UTRGV",System Operations - SIS
+PRJ0014491,Project,Project OTIS 7,OTIS,OTISCS,2025-11-01,2026-03-24,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010099,Project,Project FMS 24,FMS,FMS,2025-11-10,2026-08-17,32.65,Closed Incomplete,Yellow,UTEP,Purchasing / ePro
+PRJ0024035,Project,Project FMS 25,FMS,FMS,2026-06-29,2026-09-30,100.0,Closed Complete,Green,UTSHARE,Commitment Control
+PRJ0026027,Project,Project HCM 16,HCM,HCM,2026-06-10,2026-11-30,40.0,Closed Skipped,Green,UTEP,Absence Management
+PRJ0032896,Project,Project HCM 17,HCM,HCM,2026-09-01,2026-11-30,100.0,Closed Complete,Green,"UTA, UTEP, UTPB, UTS, UTSA, UTT, UTHCT, UTRGV",Absence Management
+PRJ0024198,Project,Project SYSOPS 4,SYSOPS,"FMS, HCM, SYSOPS, CS",2026-07-14,2026-08-31,100.0,Closed Complete,Green,UTSHARE,Portal and Security
+PRJ0014793,Project,Project SIS SERVICES 28,SIS SERVICES,"FMS, HCM, SYSOPS",2026-02-16,2026-05-08,100.0,Closed Complete,Green,"UTA, UTEP, UTSA, UTT, UTPB, UTSHARE",Shared Information Services (SIS)
+PRJ0010447,Project,Project SIS SERVICES 29,SIS SERVICES,"SYSOPS, CS",2025-11-06,2026-05-29,100.0,Closed Complete,Green,UTPB,Shared Information Services (SIS)
+PRJ0024970,Project,Project ISO 3,ISO,"OTISCS, ISO",2026-06-15,2026-08-31,100.0,Closed Complete,Green,UTS,Information Security (CISO)
+PRJ0010112,Project,Project HCM 18,HCM,"SYSOPS, HCM",2025-09-15,2026-04-15,100.0,Closed Complete,Green,UTA,Time and Labor
+PRJ0010104,Project,Project HCM 19,HCM,HCM,2025-12-08,2026-02-28,100.0,Closed Complete,Green,UTA,Human Resources
+PRJ0015248,Project,Project SYSOPS 5,SYSOPS,"FMS, HCM, CS, SYSOPS",2026-03-02,2026-04-12,100.0,Closed Complete,Green,"UTHSCH, UTRGV, UTPB",Portal and Security
+PRJ0028800,Project,Project SIS SERVICES 30,SIS SERVICES,IAS,2026-08-05,2026-08-31,100.0,Closed Complete,No status,UTS,Intelligent Automation Services (IAS)
+PRJ0024328,Project,Project SIS SERVICES 31,SIS SERVICES,CS,2026-06-01,2026-08-31,100.0,Closed Complete,Green,UTPB,Shared Information Services (SIS)
+PRJ0029000,Project,Project SIS SERVICES 32,SIS SERVICES,SIS SERVICES,2026-08-05,2026-08-17,100.0,Closed Complete,Green,,Intelligent Automation Services (IAS)
+PRJ0014184,Project,Project SIS SERVICES 33,SIS SERVICES,CS,2026-02-09,2026-04-03,100.0,Closed Complete,Green,UTT,Shared Information Services (SIS)
+PRJ0018004,Project,Project HCM 20,HCM,HCM,2026-05-12,2026-08-21,100.0,Closed Complete,Green,"UTA, UTS, UTSA, UTPB, UTEP, UTT, UTHCT",Payroll
+PRJ0010338,Project,Project B&CS 3,B&CS,"APPS, ARDC, B&CS, BI, ISO, CS, FMS, HCM, INFRA, OTISCS, PMO, SIS SERVICES, SI, SYSOPS, OTIS, SWIS",2025-04-03,2025-12-19,100.0,Closed Complete,Green,UTSHARE,ServiceNow
+PRJ0020484,Project,Project SIS SERVICES 34,SIS SERVICES,PMO,2026-05-05,2026-08-31,89.47,Closed Complete,Green,UTS,Shared Information Services (SIS)
+PRJ0012108,Project,Project HCM 21,HCM,HCM,2025-08-01,2026-05-29,100.0,Closed Complete,Green,UTHCT,Human Resources
+PRJ0014142,Project,Project SIS SERVICES 35,SIS SERVICES,CS,2026-02-09,2026-04-10,100.0,Closed Complete,Green,UTPB,Shared Information Services (SIS)
+PRJ0012155,Project,Project SYSOPS 6,SYSOPS,"FMS, HCM, SYSOPS",2026-01-14,2026-08-03,99.98,Closed Complete,Green,"UTA, UTT, UTS, UTSA, UTEP, UTPB",System Operations - SIS
+PRJ0025751,Project,Project SYSOPS 7,SYSOPS,"BI, CS, FMS, HCM, SYSOPS",2026-07-13,2026-08-31,100.0,Closed Complete,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",System Operations - SIS
+PRJ0015139,Project,Project FMS 26,FMS,FMS,2026-03-09,2026-04-08,100.0,Closed Complete,Green,UTS,Purchasing / ePro
+PRJ0017383,Project,Project BI 9,BI,BI,2026-03-25,2026-05-29,100.0,Closed Complete,Green,UTT,Business Intelligence
+PRJ0010076,Project,Project OTIS 8,OTIS,"INFRA, ARDC",2023-10-16,2026-06-19,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010097,Project,Project OTIS 9,OTIS,INFRA,2024-02-01,2024-07-31,30.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0030768,Project,Project BI 10,BI,BI,2026-09-01,2026-09-30,100.0,Closed Complete,Green,UTSHARE,Business Intelligence
+PRJ0019881,Project,Project CS 3,CS,CS,2026-05-04,2027-08-31,100.0,Closed Complete,Green,UTT,Student Systems
+PRJ0030014,Project,Project SIS SERVICES 36,SIS SERVICES,IAS,2025-09-01,2026-08-31,100.0,Closed Complete,No status,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTHSCH, UTHSCSA, UTSWMCD, UTMBG, UTMDACCH",Intelligent Automation Services (IAS)
+PRJ0011854,Project,Project HCM 22,HCM,HCM,2025-12-11,2026-07-03,100.0,Closed Complete,Green,"UTA, UTPB, UTSA",Benefits
+PRJ0010067,Project,Project FMS 27,FMS,FMS,2024-01-19,2026-07-09,100.0,Closed Complete,Green,UTSHARE,Commitment Control
+PRJ0024049,Project,Project FMS 28,FMS,FMS,2026-08-03,2026-11-06,100.0,Closed Complete,Green,UTHCT,Purchasing / ePro
+PRJ0032414,Project,Project HCM 23,HCM,HCM,2026-09-01,2026-09-30,100.0,Closed Complete,Green,"UTS, UTA, UTEP, UTHCT, UTPB, UTSA, UTT",Absence Management
+PRJ0027385,Project,Project HCM 24,HCM,HCM,2026-04-27,2026-10-01,100.0,Closed Complete,Green,"UTA, UTEP, UTPB, UTSA, UTRGV, UTS, UTSHARE",Benefits
+PRJ0014574,Project,Project OTIS 10,OTIS,"INFRA, SYSOPS",2026-01-05,2026-07-31,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0014799,Project,Project SIS SERVICES 37,SIS SERVICES,"CS, FMS, HCM",2026-02-23,2026-05-04,100.0,Closed Complete,Green,UTD,Shared Information Services (SIS)
+PRJ0010092,Project,Project FMS 29,FMS,FMS,2025-06-10,2026-10-30,99.86,Closed Complete,Green,UTA,Accounts Payable / Travel & Expense
+PRJ0017762,Project,Project FMS 30,FMS,FMS,2026-05-26,2026-09-11,100.0,Closed Complete,Green,"UTSHARE, UTRGV",Commitment Control
+PRJ0028238,Project,Project B&CS 4,B&CS,"SIS SERVICES, OTIS, B&CS",2026-07-27,2026-09-25,100.0,Closed Complete,Green,UTS,ServiceNow
+PRJ0015407,Project,Project OTIS 11,OTIS,INFRA,2026-03-09,2026-06-30,98.88,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010081,Project,Project FMS 31,FMS,FMS,2025-04-07,2026-10-30,100.0,Closed Complete,Green,UTEP,Accounts Payable / Travel & Expense
+PRJ0019053,Project,Project SYSOPS 8,SYSOPS,SYSOPS,2026-04-13,2026-10-30,100.0,Closed Complete,Green,"UTRGV, UTSHARE",Portal and Security
+PRJ0030960,Project,Project OTIS 12,OTIS,OTIS,2026-08-31,2026-11-13,98.51,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010580,Project,Project ISO 4,ISO,"SYSOPS, ISO, INFRA",2026-01-05,2026-10-16,100.0,Closed Complete,Green,UTS,Information Security (CISO)
+PRJ0024971,Project,Project ISO 5,ISO,ISO,2026-09-01,2026-10-22,0.0,Closed Incomplete,Green,UTS,Information Security (CISO)
+PRJ0010117,Project,Project CS 4,CS,CS,2025-08-06,2026-06-01,39.94,Closed Skipped,Green,UTA,Student Systems
+PRJ0028298,Project,Project SIS SERVICES 38,SIS SERVICES,IAS,2026-08-04,2026-09-17,100.0,Closed Complete,Green,UTA,Intelligent Automation Services (IAS)
+PRJ0010108,Project,Project SIS SERVICES 39,SIS SERVICES,PMO,2025-09-01,2026-08-31,59.89,Closed Complete,Green,UTS,Shared Information Services (SIS)
+PRJ0018212,Project,Project OTIS 13,OTIS,ISO,2026-03-30,2026-03-30,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0019334,Project,Project OTIS 14,OTIS,OTIS,2026-04-15,2026-05-23,0.0,Closed Skipped,Green,UTS,Tech and Info Services (OTIS)
+PRJ0024048,Project,Project FMS 32,FMS,FMS,2026-07-27,2026-10-19,100.0,Closed Complete,Green,UTRGV,General Ledger
+PRJ0012617,Project,Project SIS SERVICES 40,SIS SERVICES,"SIS SERVICES, BI, CS, FMS, HCM",2026-01-19,2026-03-06,100.0,Closed Complete,Green,"UTSHARE, UTD, UTRGV",Shared Information Services (SIS)
+PRJ0011676,Project,Project SIS SERVICES 41,SIS SERVICES,"FMS, SYSOPS",2026-01-08,2026-06-05,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTSHARE, UTS",Shared Information Services (SIS)
+PRJ0014984,Project,Project BI 11,BI,BI,2026-02-26,2026-05-29,100.0,Closed Complete,Green,UTRGV,Business Intelligence
+PRJ0020746,Project,Project OTIS 15,OTIS,INFRA,2026-05-04,2026-05-29,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0012271,Project,Project FMS 33,FMS,FMS,2026-02-02,2026-06-15,100.0,Closed Complete,Red,UTSA,Grants Management
+PRJ0011046,Project,Project ISO 6,ISO,INFRA,2025-11-03,2026-10-30,100.0,Closed Complete,Green,UTS,Information Security (CISO)
+PRJ0023636,Project,Project SYSOPS 9,SYSOPS,"CS, FMS, HCM, SYSOPS",2026-06-01,2026-07-31,100.0,Closed Complete,Green,UTSHARE,System Operations - SIS
+PRJ0022154,Project,Project B&CS 5,B&CS,"ARDC, B&CS, BI, CS, FMS, HCM, PMO, SIS SERVICES, SYSOPS",2026-05-20,2026-06-22,100.0,Closed Complete,Green,UTSHARE,ServiceNow
+PRJ0018840,Project,Project SYSOPS 10,SYSOPS,"FMS, HCM, CS, SYSOPS",2026-04-27,2026-06-21,100.0,Closed Complete,Green,"UTSHARE, UTRGV, UTPB",Portal and Security
+PRJ0010114,Project,Project OTIS 16,OTIS,OTIS,2025-11-03,2025-11-03,35.88,Closed Incomplete,Green,,Tech and Info Services (OTIS)
+PRJ0021547,Project,Project FMS 34,FMS,FMS,2026-06-22,2026-08-21,51.35,Closed Incomplete,Green,UTSA,Purchasing / ePro
+PRJ0022017,Project,Project SIS SERVICES 42,SIS SERVICES,B&CS,2026-05-18,2026-07-31,100.0,Closed Complete,Green,UTS,Shared Information Services (SIS)
+PRJ0012275,Project,Project FMS 35,FMS,FMS,2026-02-02,2026-05-15,100.0,Closed Complete,Green,UTSHARE,Grants Management
+PRJ0010068,Project,Project CS 5,CS,CS,2025-04-01,2026-03-31,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0024040,Project,Project FMS 36,FMS,FMS,2026-07-07,2026-12-02,100.0,Closed Complete,Green,UTSHARE,Commitment Control
+PRJ0018929,Project,Project HCM 25,HCM,HCM,2028-01-03,2028-06-03,0.0,Closed Incomplete,Green,UTHCT,Human Resources
+PRJ0014127,Project,Project SIS SERVICES 43,SIS SERVICES,CS,2026-02-09,2026-05-05,100.0,Closed Complete,Green,UTA,Shared Information Services (SIS)
+PRJ0016474,Project,Project FMS 37,FMS,FMS,2024-12-02,2026-07-27,100.0,Closed Complete,Green,"UTSHARE, UTRGV",General Ledger
+PRJ0020722,Project,Project OTIS 17,OTIS,OTISCS,2026-04-01,2026-06-05,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0022852,Project,Project BI 12,BI,BI,2026-07-01,2026-08-31,99.42,Closed Complete,Green,UTS,Business Intelligence
+PRJ0010077,Project,Project OTIS 18,OTIS,INFRA,2024-04-22,2026-05-29,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0028192,Project,Project SIS SERVICES 44,SIS SERVICES,IAS,2025-09-01,2026-08-31,100.0,Closed Complete,Green,UTS,Intelligent Automation Services (IAS)
+PRJ0019060,Project,Project SIS SERVICES 45,SIS SERVICES,PMO,2026-04-14,2026-04-28,100.0,Closed Complete,Green,SFA,Shared Information Services (SIS)
+PRJ0010337,Project,Project BI 13,BI,"FMS, HCM",2025-06-24,2025-06-24,100.0,Closed Complete,Green,UTSHARE,Business Intelligence
+PRJ0011084,Project,Project SIS SERVICES 46,SIS SERVICES,CS,2025-12-22,2026-04-30,100.0,Closed Complete,Green,UTPB,Shared Information Services (SIS)
+PRJ0010087,Project,Project FMS 38,FMS,"HCM, FMS",2025-05-02,2026-06-29,100.0,Closed Complete,Green,"UTRGV, UTA",Grants Management
+PRJ0022556,Project,Project SIS SERVICES 47,SIS SERVICES,"CS, FMS, SYSOPS, HCM, PMO",2026-04-01,2026-12-31,100.0,Closed Complete,Green,"UTSHARE, UTA, UTD, UTT, UTPB",Shared Information Services (SIS)
+PRJ0017773,Project,Project B&CS 6,B&CS,"B&CS, FMS, OTISCS, CS, HCM",2026-04-06,2026-06-05,100.0,Closed Complete,Green,"UTSHARE, UTRGV, UTD",ServiceNow
+PRJ0010113,Project,Project OTIS 19,OTIS,OTISCS,2025-10-13,2026-01-16,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010100,Project,Project HCM 26,HCM,HCM,2025-11-01,2026-04-30,100.0,Closed Complete,Green,UTA,Human Resources
+PRJ0022349,Project,Project BI 14,BI,BI,2026-06-01,2026-07-01,100.0,Closed Complete,Green,UTS,Business Intelligence
+PRJ0010122,Project,Project BI 15,BI,"FMS, HCM",2025-06-09,2025-06-09,100.0,Closed Complete,Green,UTSA,Business Intelligence
+PRJ0010118,Project,Project OTIS 20,OTIS,ISO,2025-05-20,2026-01-09,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0018742,Project,Project SIS SERVICES 48,SIS SERVICES,PMO,2026-04-14,2026-06-30,100.0,Closed Complete,Green,UTS,Shared Information Services (SIS)
+PRJ0014981,Project,Project BI 16,BI,BI,2026-02-26,2026-03-31,100.0,Closed Complete,Green,UTS,Business Intelligence
+PRJ0010471,Project,Project SIS SERVICES 49,SIS SERVICES,PMO,2025-11-24,2026-04-17,100.0,Closed Complete,Green,UTS,Shared Information Services (SIS)
+PRJ0010069,Project,Project CS 6,CS,CS,2025-04-16,2026-05-29,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0010116,Project,Project SIS SERVICES 50,SIS SERVICES,"FMS, HCM",2025-11-10,2025-11-21,100.0,Closed Complete,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTSHARE",Shared Information Services (SIS)
+PRJ0010105,Project,Project SIS SERVICES 51,SIS SERVICES,SYSOPS,2025-08-11,2026-01-16,100.0,Closed Complete,Green,"UTD, UTRGV, UTSHARE",Shared Information Services (SIS)
+PRJ0010120,Project,Project SIS SERVICES 52,SIS SERVICES,"SYSOPS, CS",2025-09-15,2025-12-19,100.0,Closed Complete,Green,"UTT, UTPB",Shared Information Services (SIS)
+PRJ0014133,Project,Project SIS SERVICES 53,SIS SERVICES,"CS, FMS, HCM",2026-02-09,2026-02-20,100.0,Closed Complete,Green,"UTSHARE, UTD, UTRGV",Shared Information Services (SIS)
+PRJ0010107,Project,Project FMS 39,FMS,FMS,2026-04-01,2026-04-10,100.0,Closed Complete,Green,UTS,Accounts Payable / Travel & Expense
+PRJ0010121,Project,Project SIS SERVICES 54,SIS SERVICES,SYSOPS,2025-09-15,2026-01-16,100.0,Closed Complete,Yellow,"UTD, UTRGV",Shared Information Services (SIS)
+PRJ0010080,Project,Project BI 17,BI,CS,2025-05-05,2025-07-18,100.0,Closed Complete,Green,UTT,Business Intelligence
+PRJ0012759,Project,Project SIS SERVICES 55,SIS SERVICES,"BI, SYSOPS",2026-01-26,2026-03-31,100.0,Closed Complete,Green,UTSHARE,Shared Information Services (SIS)
+PRJ0010101,Project,Project HCM 27,HCM,HCM,2025-12-08,2026-01-30,100.0,Closed Complete,Green,UTS,Human Resources
+PRJ0010070,Project,Project FMS 40,FMS,FMS,2022-04-25,2022-08-31,11.4,Closed Complete,Green,"UTA, UTRGV, UTD, UTPB, UTEP, UTSA, UTT, UTS",Treasury
+PRJ0011485,Project,Project HCM 28,HCM,HCM,2026-01-05,2026-04-30,100.0,Closed Complete,Green,UTPB,Benefits
+PRJ0010073,Project,Project FMS 41,FMS,FMS,2025-12-08,2025-12-08,100.0,Closed Complete,Green,"UTSHARE, UTRGV",Accounts Payable / Travel & Expense
+PRJ0015860,Project,Project FMS 42,FMS,FMS,2026-03-10,2026-06-01,100.0,Closed Complete,Green,"UTS, UTAUS, UTSHARE",General Ledger
+PRJ0010095,Project,Project HCM 29,HCM,HCM,2025-12-08,2026-08-31,100.0,Closed Complete,Green,"UTA, UTEP, UTPB, UTSA, UTT, UTS, UTHCT",Human Resources
+PRJ0010085,Project,Project CS 7,CS,CS,2025-04-01,2026-03-01,100.0,Closed Complete,Green,UTT,Student Systems
+PRJ0010086,Project,Project CS 8,CS,CS,2025-04-01,2026-05-01,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0010060,Project,Project FMS 43,FMS,FMS,2025-10-24,2026-02-27,100.0,Closed Complete,Green,UTT,Commitment Control
+PRJ0010063,Project,Project CS 9,CS,CS,2025-09-29,2026-05-29,65.45,Closed Incomplete,Green,UTPB,Student Systems
+PRJ0013018,Project,Project HCM 30,HCM,HCM,2026-03-02,2026-06-30,100.0,Closed Complete,Green,UTS,Absence Management
+PRJ0010078,Project,Project HCM 31,HCM,HCM,2025-01-09,2026-02-06,100.0,Closed Complete,Green,UTA,Commitment Accounting
+PRJ0010091,Project,Project HCM 32,HCM,HCM,2025-05-22,2025-12-08,100.0,Closed Complete,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTSHARE",Benefits
+PRJ0013595,Project,Project HCM 33,HCM,HCM,2026-01-01,2026-03-31,100.0,Closed Complete,Green,UTHCT,Absence Management
+PRJ0014034,Project,Project HCM 34,HCM,HCM,2025-12-01,2026-02-28,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTT, UTPB, UTS, UTSA, UTHCT",Absence Management
+PRJ0013734,Project,Project HCM 35,HCM,HCM,2026-02-01,2026-02-28,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTS, UTPB, UTHCT",Absence Management
+PRJ0010064,Project,Project HCM 36,HCM,HCM,2025-12-08,2025-12-08,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTT, UTSA, UTPB, UTHCT",Absence Management
+PRJ0010061,Project,Project HCM 37,HCM,HCM,2026-02-01,2026-03-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",Absence Management
+PRJ0010109,Project,Project CS 10,CS,CS,2025-09-08,2025-09-08,100.0,Closed Complete,Yellow,"UTPB, UTT",Student Systems
+PRJ0010089,Project,Project CS 11,CS,CS,2025-04-28,2026-03-31,100.0,Closed Complete,Green,UTT,Student Systems
+PRJ0010066,Project,Project FMS 44,FMS,FMS,2025-08-24,2026-04-06,100.0,Closed Complete,Green,UTRGV,General Ledger
+PRJ0012373,Project,Project HCM 38,HCM,HCM,2026-01-27,2026-04-15,100.0,Closed Complete,Green,UTA,Human Resources
+PRJ0010115,Project,Project CS 12,CS,CS,2025-11-11,2026-05-29,100.0,Closed Complete,Green,"UTT, UTPB",Student Systems
+PRJ0010968,Project,Project CS 13,CS,CS,2025-12-15,2026-04-30,100.0,Closed Complete,Green,UTT,Student Systems
+PRJ0010088,Project,Project CS 14,CS,CS,2025-12-08,2026-02-28,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0010079,Project,Project HCM 39,HCM,HCM,2024-11-11,2025-05-31,100.0,Closed Complete,Green,UTEP,Human Resources
+PRJ0010065,Project,Project FMS 45,FMS,FMS,2025-11-01,2026-05-08,100.0,Closed Complete,Yellow,"UTSHARE, UTRGV",General Ledger
+PRJ0012774,Project,Project BI 18,BI,BI,2026-01-28,2026-04-30,100.0,Closed Complete,Green,UTSHARE,Business Intelligence
+PRJ0010123,Project,Project BI 19,BI,FMS,2025-06-23,2026-01-30,100.0,Closed Complete,Green,UTRGV,Business Intelligence
+PRJ0010111,Project,Project FMS 46,FMS,FMS,2025-09-15,2026-05-29,100.0,Closed Complete,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",Accounts Payable / Travel & Expense
+PRJ0010059,Project,Project FMS 47,FMS,FMS,2024-11-15,2026-02-26,0.0,Closed Skipped,Green,UTPB,Accounts Payable / Travel & Expense
+PRJ0010096,Project,Project CS 15,CS,CS,2024-08-05,2026-05-29,100.0,Closed Complete,Green,"UTA, UTPB",Student Systems
+PRJ0011063,Project,Project CS 16,CS,CS,2026-01-05,2026-05-31,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0016430,Project,Project OTIS 21,OTIS,OTISCS,2026-03-13,2026-05-08,0.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010057,Project,Project FMS 48,FMS,FMS,2025-12-08,2026-07-31,100.0,Closed Complete,Green,UTSHARE,Commitment Control
+PRJ0010084,Project,Project HCM 40,HCM,HCM,2025-02-26,2026-05-29,100.0,Closed Complete,Green,"UTT, UTHCT",Human Resources
+PRJ0010103,Project,Project HCM 41,HCM,HCM,2025-11-03,2026-04-01,100.0,Closed Complete,Green,"UTT, UTHCT",Recruiting
+PRJ0018939,Project,Project FMS 49,FMS,FMS,2026-05-04,2026-09-17,100.0,Closed Complete,Green,UTRGV,Purchasing / ePro
+PRJ0012279,Project,Project FMS 50,FMS,FMS,2026-02-02,2026-04-30,100.0,Closed Complete,Green,UTSHARE,Grants Management
+PRJ0017138,Project,Project CS 17,CS,CS,2026-05-04,2026-06-22,100.0,Closed Complete,Green,UTPB,Student Systems
+PRJ0010124,Project,Project HCM 42,HCM,HCM,2025-11-12,2026-05-22,100.0,Closed Complete,Green,UTA,Human Resources
+PRJ0023339,Project,Project SIS SERVICES 56,SIS SERVICES,PMO,2026-06-01,2026-08-31,100.0,Closed Complete,Green,,Shared Information Services (SIS)
+PRJ0030591,Project,Project SIS SERVICES 57,SIS SERVICES,SIS SERVICES,2026-09-01,2026-09-17,100.0,Closed Complete,No status,,Intelligent Automation Services (IAS)
+PRJ0024026,Project,Project FMS 51,FMS,FMS,2026-06-11,2026-07-31,100.0,Closed Complete,Green,"UTA, UTRGV",Commitment Control
+PRJ0019002,Project,Project OTIS 22,OTIS,OTISCS,2026-03-09,2026-05-29,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0019696,Project,Project OTIS 23,OTIS,OTISCS,2026-04-27,2026-04-27,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010106,Project,Project CS 18,CS,CS,2025-08-20,2026-05-29,100.0,Closed Complete,Green,UTT,Student Systems
+PRJ0010072,Project,Project FMS 52,FMS,FMS,2022-02-28,2026-05-29,12.23,Closed Skipped,Green,UTSHARE,Purchasing / ePro
+PRJ0011800,Project,Project FMS 53,FMS,FMS,2026-02-02,2026-07-14,100.0,Closed Complete,Green,UTSHARE,Grants Management
+PRJ0016410,Project,Project OTIS 24,OTIS,INFRA,2026-01-14,2026-06-06,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0010082,Project,Project HCM 43,HCM,HCM,2025-01-06,2026-06-11,24.83,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",Absence Management
+PRJ0024297,Project,Project SIS SERVICES 58,SIS SERVICES,CS,2026-06-01,2026-08-31,100.0,Closed Complete,Green,UTA,Shared Information Services (SIS)
+PRJ0020659,Project,Project ISO 7,ISO,"INFRA, APPS",2026-05-04,2026-08-14,100.0,Closed Complete,Green,UTS,Information Security (CISO)
+PRJ0026790,Project,Project UNASSIGNED 2,UNASSIGNED,UNASSIGNED,2026-07-06,2026-07-06,100.0,Closed Complete,Green,,
+PRJ0010056,Project,Project FMS 54,FMS,"FMS, APPS",2026-02-01,2026-07-14,100.0,Closed Complete,Green,"UTRGV, UTSHARE, UTT, UTEP, UTA, UTPB, UTSA, UTHCT",Grants Management
+PRJ0028303,Project,Project SIS SERVICES 59,SIS SERVICES,IAS,2026-08-04,2026-09-17,100.0,Closed Complete,Green,UTA,Intelligent Automation Services (IAS)
+PRJ0017920,Project,Project OTIS 25,OTIS,PMO,2026-01-05,2026-08-31,84.38,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0024047,Project,Project FMS 55,FMS,FMS,2026-07-07,2027-03-05,100.0,Closed Complete,Green,UTRGV,General Ledger
+PRJ0010074,Project,Project HCM 44,HCM,HCM,2022-11-14,2026-12-31,0.0,Closed Incomplete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS",Absence Management
+PRJ0028223,Project,Project SYSOPS 11,SYSOPS,SYSOPS,2026-08-02,2026-08-02,100.0,Closed Complete,Green,,System Operations - SIS
+PRJ0027061,Project,Project HCM 45,HCM,HCM,2026-07-14,2026-07-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0027064,Project,Project HCM 46,HCM,HCM,2026-07-14,2026-07-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0027185,Project,Project HCM 47,HCM,HCM,2026-07-16,2026-07-31,100.0,Closed Complete,Green,UTSA,Absence Management
+PRJ0024355,Project,Project SIS SERVICES 60,SIS SERVICES,CS,2026-06-01,2026-08-31,100.0,Closed Complete,Green,UTD,Shared Information Services (SIS)
+PRJ0010062,Project,Project HCM 48,HCM,HCM,2024-12-02,2026-08-31,0.31,Closed Incomplete,Green,"UTA, UTEP, UTHCT, UTPB, UTRGV, UTS, UTSA, UTT",Payroll
+PRJ0010810,Project,Project HCM 49,HCM,HCM,2025-10-15,2026-08-21,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTHCT, UTPB, UTS",Benefits
+PRJ0013100,Project,Project OTIS 26,OTIS,"PMO, OTISCS, OTIS",2026-01-27,2026-05-29,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0028978,Project,Project B&CS 7,B&CS,"SIS SERVICES, B&CS",2026-09-01,2027-01-31,100.0,Closed Complete,Green,UTS,ServiceNow
+PRJ0024046,Project,Project FMS 56,FMS,FMS,2026-07-01,2026-12-31,100.0,Closed Complete,Green,UTRGV,General Ledger
+PRJ0017368,Project,Project HCM 50,HCM,HCM,2026-02-01,2026-08-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0020281,Project,Project SYSOPS 12,SYSOPS,"BI, CS, FMS, HCM, SIS SERVICES",2026-04-20,2026-06-15,98.03,Closed Complete,Green,"UTD, UTRGV, UTSHARE",System Operations - SIS
+PRJ0010119,Project,Project SIS SERVICES 61,SIS SERVICES,CS,2025-09-08,2025-12-12,100.0,Closed Complete,Green,"UTA, UTRGV, UTT, UTPB, UTSHARE, UTSA, UTEP",Shared Information Services (SIS)
+PRJ0023353,Project,Project FMS 57,FMS,FMS,2026-06-02,2026-08-31,100.0,Closed Complete,Green,UTA,Accounts Payable / Travel & Expense
+PRJ0024974,Project,Project HCM 51,HCM,HCM,2026-07-01,2026-07-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0010339,Project,Project SYSOPS 13,SYSOPS,"SYSOPS, BI, FMS, HCM, CS",2024-08-23,2026-07-31,100.0,Closed Complete,Green,"UTA, UTD, UTEP, UTRGV, UTSA, UTT, UTSHARE, UTPB",System Operations - SIS
+PRJ0028488,Project,Project HCM 52,HCM,HCM,2026-08-03,2026-10-31,100.0,Closed Complete,Green,UTT,Human Resources
+PRJ0014795,Project,Project SIS SERVICES 62,SIS SERVICES,"FMS, HCM",2026-02-23,2026-05-04,100.0,Closed Complete,Green,UTRGV,Shared Information Services (SIS)
+PRJ0010075,Project,Project BI 20,BI,BI,2023-10-02,2026-08-31,100.0,Closed Complete,Green,UTSA,Business Intelligence
+PRJ0024365,Project,Project SIS SERVICES 63,SIS SERVICES,CS,2026-06-01,2026-08-31,100.0,Closed Complete,Green,UTT,Shared Information Services (SIS)
+PRJ0010371,Project,Project HCM 53,HCM,HCM,2026-01-20,2026-05-01,100.0,Closed Complete,Green,UTPB,Human Resources
+PRJ0027111,Project,Project SIS SERVICES 64,SIS SERVICES,IAS,2026-07-17,2026-07-17,100.0,Closed Complete,Green,UTMDACCH,Intelligent Automation Services (IAS)
+PRJ0027217,Project,Project HCM 54,HCM,HCM,2026-08-01,2026-12-31,100.0,Closed Complete,Green,"UTA, UTEP, UTRGV, UTSA, UTT, UTPB, UTS, UTHCT",Absence Management
+PRJ0010251,Project,Project OTIS 27,OTIS,ISO,2025-12-01,2026-03-31,100.0,Closed Complete,Green,UTS,Tech and Info Services (OTIS)
+PRJ0033579,Project,Project BI 21,BI,BI,2026-09-01,2026-12-01,100.0,Closed Complete,No status,UTSHARE,Business Intelligence
+PRJ0010098,Project,Project FMS 58,FMS,FMS,2025-02-17,2026-06-12,100.0,Closed Complete,Green,UTA,Accounts Payable / Travel & Expense
+PRJ0023355,Project,Project FMS 59,FMS,FMS,2026-08-05,2026-10-30,100.0,Closed Complete,Green,UTSHARE,Purchasing / ePro
+PRJ0012171,Project,Project BI 22,BI,"BI, HCM",2026-01-12,2026-08-31,100.0,Closed Complete,Green,"UTT, UTHCT",Business Intelligence
+PRJ0028934,Project,Project HCM 55,HCM,HCM,2026-05-18,2026-08-31,100.0,Closed Complete,Green,UTSA,Absence Management
+PRJ0028383,Project,Project SIS SERVICES 65,SIS SERVICES,SIS SERVICES,2026-01-01,2026-12-31,100.0,Closed Complete,Green,,Intelligent Automation Services (IAS)
+DMND0001256,Demand,Demand HCM 1,HCM,HCM,2026-02-02,2026-07-31,0,Approved,,UTS,Absence Management
+DMND0001368,Demand,Demand HCM 2,HCM,HCM,2026-07-01,2026-08-31,0,Screening,,"UTSHARE, UTRGV",Absence Management
+DMND0001343,Demand,Demand FMS 1,FMS,FMS,2027-03-01,2027-06-30,0,Qualified,,UTS,Accounts Payable / Travel & Expense
+DMND0001258,Demand,Demand FMS 2,FMS,FMS,2027-02-01,2027-05-28,0,Submitted,,UTRGV,Accounts Payable / Travel & Expense
+DMND0001159,Demand,Demand FMS 3,FMS,FMS,2027-02-01,2027-04-30,0,Approved,,UTS,Accounts Payable / Travel & Expense
+DMND0001463,Demand,Demand FMS 4,FMS,FMS,2027-03-01,2027-06-30,0,Screening,,"UTSA, UTRGV",Accounts Payable / Travel & Expense
+DMND0001396,Demand,Demand FMS 5,FMS,FMS,2027-02-01,2027-05-31,0,Qualified,,"UTEP, UTT, UTA",Accounts Payable / Travel & Expense
+DMND0001475,Demand,Demand FMS 6,FMS,FMS,2027-01-05,2027-05-03,0,Screening,,"UTA, UTS",Accounts Payable / Travel & Expense
+DMND0001474,Demand,Demand FMS 7,FMS,FMS,2027-01-01,2027-06-01,0,Submitted,,"UTPB, UTRGV",Accounts Payable / Travel & Expense
+DMND0001481,Demand,Demand HCM 3,HCM,HCM,2026-11-01,2027-01-16,0,Submitted,,"UTHCT, UTT",Benefits
+DMND0001477,Demand,Demand HCM 4,HCM,HCM,2026-10-23,2027-03-31,0,Submitted,,"UTS, UTPB, UTT, UTRGV, UTA, UTEP, UTHCT, UTSA",Benefits
+DMND0001472,Demand,Demand BI 1,BI,"BI, FMS",2027-02-01,2027-05-31,0,Approved,,"UTT, UTHCT",Business Intelligence
+DMND0001339,Demand,Demand FMS 8,FMS,FMS,2027-01-05,2027-04-30,0,Qualified,,"UTSHARE, UTRGV, UTEP, UTPB, UTSA, UTS",General Ledger
+DMND0001139,Demand,Demand FMS 9,FMS,FMS,2027-01-04,2027-02-26,0,Qualified,,UTRGV,General Ledger
+DMND0001476,Demand,Demand FMS 10,FMS,FMS,2027-02-08,2027-07-02,0,Submitted,,UTPB,General Ledger
+DMND0001399,Demand,Demand FMS 11,FMS,FMS,2027-03-01,2027-06-30,0,Screening,,UTA,General Ledger
+DMND0001373,Demand,Demand FMS 12,FMS,FMS,2027-06-01,2028-08-31,0,Submitted,,UTS,General Ledger
+DMND0001337,Demand,Demand FMS 13,FMS,FMS,2027-01-04,2027-03-12,0,Qualified,,UTS,General Ledger
+DMND0001240,Demand,Demand FMS 14,FMS,FMS,2027-01-04,2027-04-19,0,Submitted,,UTRGV,Grants Management
+DMND0001419,Demand,Demand SIS SERVICES 1,SIS SERVICES,IAS,2026-06-01,2026-08-31,0,Deferred,,UTHCT,Intelligent Automation Services (IAS)
+DMND0001412,Demand,Demand SIS SERVICES 2,SIS SERVICES,SIS SERVICES,2025-09-25,2026-08-31,0,Submitted,,UTS,Intelligent Automation Services (IAS)
+DMND0001413,Demand,Demand SIS SERVICES 3,SIS SERVICES,SIS SERVICES,2025-09-25,2026-05-31,0,Deferred,,UTS,Intelligent Automation Services (IAS)
+DMND0001415,Demand,Demand SIS SERVICES 4,SIS SERVICES,SIS SERVICES,2025-12-10,2026-03-31,0,Deferred,,UTHSCSA,Intelligent Automation Services (IAS)
+DMND0001417,Demand,Demand SIS SERVICES 5,SIS SERVICES,SIS SERVICES,2025-12-18,2026-02-28,0,Screening,,UTS,Intelligent Automation Services (IAS)
+DMND0001418,Demand,Demand SIS SERVICES 6,SIS SERVICES,SIS SERVICES,2025-11-18,2026-05-31,0,Deferred,,UTRGV,Intelligent Automation Services (IAS)
+DMND0001441,Demand,Demand SIS SERVICES 7,SIS SERVICES,SIS SERVICES,2026-10-01,2027-01-31,0,Deferred,,UTSA,Intelligent Automation Services (IAS)
+DMND0001447,Demand,Demand SIS SERVICES 8,SIS SERVICES,SIS SERVICES,2026-10-05,2027-03-31,0,Deferred,,UTSA,Intelligent Automation Services (IAS)
+DMND0001388,Demand,Demand HCM 5,HCM,HCM,2026-09-01,2027-05-31,0,Approved,,"SFA, UTAUS, UTD, UTHSCH, UTMBG, UTMDACCH, UTSWMCD, UTSHARE",Payroll
+DMND0001403,Demand,Demand SYSOPS 1,SYSOPS,"CS, FMS, HCM, SYSOPS",2026-07-13,2026-09-30,0,Screening,,UTD,Portal and Security
+DMND0001312,Demand,Demand FMS 15,FMS,FMS,2027-01-05,2027-05-28,0,Approved,,UTRGV,Purchasing / ePro
+DMND0001402,Demand,Demand SIS SERVICES 9,SIS SERVICES,"CS, FMS, HCM, BI, SYSOPS",2026-08-03,2027-01-29,0,Qualified,,"UTA, UTSHARE, UTRGV, UTT, UTPB, UTD",Shared Information Services (SIS)
+DMND0001216,Demand,Demand CS 1,CS,"CS, FMS",2026-02-02,2026-12-18,0,Submitted,,"UTT, UTHCT",Student Systems
+DMND0001327,Demand,Demand CS 2,CS,CS,2026-05-04,2027-08-31,0,Draft,,UTA,Student Systems
+DMND0001439,Demand,Demand CS 3,CS,CS,2026-08-24,2026-10-30,0,Draft,,UTPB,Student Systems
+DMND0001378,Demand,Demand CS 4,CS,CS,2026-06-01,2027-03-05,0,Submitted,,UTT,Student Systems
+DMND0001482,Demand,Demand OTIS 1,OTIS,OTIS,2027-02-01,2028-04-28,0,Submitted,,UTS,Tech and Info Services (OTIS)
+DMND0001313,Demand,Demand OTIS 2,OTIS,OTIS,2026-03-01,2026-12-01,0,Submitted,,UTS,Tech and Info Services (OTIS)
+DMND0001478,Demand,Demand OTIS 3,OTIS,OTIS,2026-12-01,2027-03-31,0,Submitted,,UTS,Tech and Info Services (OTIS)
+DMND0001345,Demand,Demand HCM 6,HCM,HCM,2026-06-01,2026-08-31,0,Screening,,"UTA, UTEP, UTSA, UTS, UTT",Time and Labor
+DMND0001367,Demand,Demand HCM 7,HCM,HCM,2026-06-01,2026-06-30,0,Submitted,,UTA,Time and Labor
+DMND0001310,Demand,Demand HCM 8,HCM,HCM,2026-04-30,2026-05-31,0,Draft,,UTSHARE,Time and Labor
+DMND0001303,Demand,Demand HCM 9,HCM,HCM,2026-03-17,2026-07-31,0,Screening,,UTA,Time and Labor
+DMND0001379,Demand,Demand HCM 10,HCM,HCM,2026-05-20,2026-07-31,0,Deferred,,UTA,Time and Labor
+DMND0001255,Demand,Demand HCM 11,HCM,HCM,2026-03-02,2026-08-03,0,Screening,,UTS,Time and Labor
+DMND0001150,Demand,Demand HCM 12,HCM,HCM,2026-04-21,2026-05-29,0,Draft,,UTSA,Time and Labor
+DMND0001149,Demand,Demand HCM 13,HCM,HCM,2022-08-01,2022-08-31,0,Draft,,UTEP,Time and Labor
+DMND0001144,Demand,Demand HCM 14,HCM,HCM,2024-10-01,2024-11-04,0,Deferred,,UTS,Time and Labor
+DMND0001142,Demand,Demand HCM 15,HCM,HCM,2026-02-02,2026-06-15,0,Approved,,"UTA, UTEP, UTPB, UTRGV, UTSA, UTT, UTS",Time and Labor
+DMND0001126,Demand,Demand HCM 16,HCM,HCM,2026-02-02,2026-04-03,0,Qualified,,UTS,Time and Labor
+DMND0001138,Demand,Demand HCM 17,HCM,HCM,2026-03-02,2026-08-28,0,Qualified,,UTRGV,Time and Labor
+DMND0001185,Demand,Demand HCM 18,HCM,HCM,2025-12-01,2026-03-02,0,Approved,,UTA,Time and Labor
+DMND0001154,Demand,Demand HCM 19,HCM,HCM,2022-07-12,2022-08-31,0,Draft,,UTRGV,Time and Labor
+ENHC0010926,Enhancement,Enhancement HCM 1,HCM,HCM,2026-08-31,2026-10-01,100.0,Closed Complete,,,
+ENHC0011064,Enhancement,Enhancement HCM 2,HCM,HCM,2026-10-07,2026-10-31,100.0,Closed Complete,,,
+ENHC0011066,Enhancement,Enhancement HCM 3,HCM,HCM,2026-10-09,2026-11-30,10.0,Work in Progress,,,
+ENHC0011067,Enhancement,Enhancement HCM 4,HCM,HCM,2026-10-12,2026-12-09,100.0,Closed Complete,,,
+ENHC0010078,Enhancement,Enhancement B&CS 1,B&CS,B&CS,2026-03-23,2026-05-15,100.0,Closed Complete,,,
+ENHC0010117,Enhancement,Enhancement B&CS 2,B&CS,B&CS,2025-11-25,2026-01-06,100.0,Closed Complete,,,
+ENHC0010081,Enhancement,Enhancement B&CS 3,B&CS,B&CS,2025-12-08,2026-02-27,100.0,Closed Complete,,,
+ENHC0010075,Enhancement,Enhancement B&CS 4,B&CS,B&CS,2025-12-08,2026-07-24,100.0,Closed Complete,,,
+ENHC0010916,Enhancement,Enhancement B&CS 5,B&CS,B&CS,2026-08-26,2026-10-02,100.0,Closed Complete,,,
+ENHC0010168,Enhancement,Enhancement B&CS 6,B&CS,B&CS,2026-06-22,2026-10-16,48.0,On Hold,,,
+ENHC0010959,Enhancement,Enhancement B&CS 7,B&CS,B&CS,2026-09-08,2026-11-10,99.0,Work in Progress,,,
+ENHC0010562,Enhancement,Enhancement B&CS 8,B&CS,B&CS,2026-05-27,2026-06-02,100.0,Closed Complete,,,
+ENHC0010675,Enhancement,Enhancement B&CS 9,B&CS,B&CS,2026-06-12,2026-07-31,100.0,Closed Complete,,,
+ENHC0010169,Enhancement,Enhancement B&CS 10,B&CS,B&CS,2026-05-26,2026-08-03,100.0,Closed Complete,,,
+ENHC0011113,Enhancement,Enhancement B&CS 11,B&CS,B&CS,2026-10-29,2026-10-31,0.0,Work in Progress,,,
+ENHC0010866,Enhancement,Enhancement B&CS 12,B&CS,B&CS,2026-08-12,2026-08-28,100.0,Closed Complete,,,
+ENHC0010869,Enhancement,Enhancement B&CS 13,B&CS,B&CS,2026-08-17,2026-09-04,100.0,Closed Complete,,,
+ENHC0010244,Enhancement,Enhancement B&CS 14,B&CS,B&CS,2026-01-12,2026-09-30,100.0,Closed Complete,,,
+ENHC0011025,Enhancement,Enhancement B&CS 15,B&CS,B&CS,2027-04-01,2027-04-30,10.0,On Hold,,,
+ENHC0010088,Enhancement,Enhancement B&CS 16,B&CS,B&CS,2026-02-02,2026-02-06,100.0,Closed Complete,,,
+ENHC0010958,Enhancement,Enhancement B&CS 17,B&CS,B&CS,2026-10-07,2026-10-16,100.0,Closed Complete,,,
+ENHC0011070,Enhancement,Enhancement B&CS 18,B&CS,B&CS,2026-10-13,2026-11-13,70.0,Work in Progress,,,
+ENHC0011084,Enhancement,Enhancement B&CS 19,B&CS,B&CS,2026-10-14,2026-10-15,100.0,Closed Complete,,,
+ENHC0010465,Enhancement,Enhancement B&CS 20,B&CS,B&CS,2026-03-24,2026-03-27,100.0,Closed Complete,,,
+ENHC0010443,Enhancement,Enhancement B&CS 21,B&CS,B&CS,2026-04-02,2026-04-17,100.0,Closed Complete,,,
+ENHC0010733,Enhancement,Enhancement B&CS 22,B&CS,B&CS,2026-07-01,2026-07-02,100.0,Closed Complete,,,
+ENHC0010402,Enhancement,Enhancement B&CS 23,B&CS,B&CS,2026-03-25,2026-04-06,100.0,Closed Complete,,,
+ENHC0010803,Enhancement,Enhancement B&CS 24,B&CS,B&CS,2026-07-30,2026-09-04,100.0,Closed Complete,,,
+ENHC0010125,Enhancement,Enhancement B&CS 25,B&CS,B&CS,2026-07-13,2026-08-28,100.0,Closed Complete,,,
+ENHC0010770,Enhancement,Enhancement B&CS 26,B&CS,B&CS,2026-07-17,2026-09-11,100.0,Closed Complete,,,
+ENHC0010972,Enhancement,Enhancement HCM 5,HCM,HCM,2026-09-10,2026-09-11,0.0,Work in Progress,,,
+ENHC0011062,Enhancement,Enhancement B&CS 27,B&CS,B&CS,2026-10-07,2026-11-06,78.0,Work in Progress,,,
+ENHC0010828,Enhancement,Enhancement B&CS 28,B&CS,B&CS,2026-09-21,2026-10-30,100.0,Closed Complete,,,
+ENHC0010135,Enhancement,Enhancement B&CS 29,B&CS,B&CS,2026-01-15,2026-01-23,100.0,Closed Complete,,,
+ENHC0010296,Enhancement,Enhancement B&CS 30,B&CS,B&CS,2026-01-26,2026-01-30,100.0,Closed Complete,,,
+ENHC0010466,Enhancement,Enhancement B&CS 31,B&CS,B&CS,2026-03-26,2026-04-24,100.0,Closed Complete,,,
+ENHC0010521,Enhancement,Enhancement B&CS 32,B&CS,B&CS,2026-07-14,2026-08-14,100.0,Closed Complete,,,
+ENHC0010561,Enhancement,Enhancement B&CS 33,B&CS,B&CS,2026-04-30,2026-05-29,100.0,Closed Complete,,,
+ENHC0010316,Enhancement,Enhancement B&CS 34,B&CS,B&CS,2026-05-18,2026-05-29,100.0,Closed Complete,,,
+ENHC0010226,Enhancement,Enhancement B&CS 35,B&CS,B&CS,2026-03-26,2026-04-17,100.0,Closed Complete,,,
+ENHC0010526,Enhancement,Enhancement B&CS 36,B&CS,B&CS,2026-04-16,2026-04-22,100.0,Closed Complete,,,
+ENHC0010323,Enhancement,Enhancement B&CS 37,B&CS,B&CS,2026-02-03,2026-03-05,100.0,Closed Complete,,,
+ENHC0010414,Enhancement,Enhancement B&CS 38,B&CS,B&CS,2026-03-23,2026-04-17,100.0,Closed Complete,,,
+ENHC0010137,Enhancement,Enhancement B&CS 39,B&CS,B&CS,2026-03-10,2026-04-10,100.0,Closed Complete,,,
+ENHC0010200,Enhancement,Enhancement B&CS 40,B&CS,B&CS,2025-12-16,2026-03-20,100.0,Closed Complete,,,
+ENHC0010962,Enhancement,Enhancement B&CS 41,B&CS,B&CS,2026-09-04,2026-11-06,99.0,Work in Progress,,,
+ENHC0010401,Enhancement,Enhancement B&CS 42,B&CS,B&CS,2026-04-13,2026-04-24,100.0,Closed Complete,,,
+ENHC0010775,Enhancement,Enhancement FMS 1,FMS,FMS,2026-07-16,2026-09-04,33.33,Closed Complete,,,
+IDEA0001055,Idea,Idea HCM 1,HCM,HCM,2026-07-16,2026-07-16,0,Idea,,"UTS, UTA",Absence Management
+IDEA0001057,Idea,Idea HCM 2,HCM,HCM,2026-07-16,2026-07-16,0,Idea,,"UTS, UTA",Absence Management
+IDEA0001060,Idea,Idea HCM 3,HCM,HCM,2026-07-21,2027-03-01,0,Idea - Under Review,,UTS,Time and Labor
+IDEA0001061,Idea,Idea FMS 1,FMS,FMS,2026-07-22,2026-09-01,0,Idea,,UTRGV,General Ledger
+IDEA0001065,Idea,Idea FMS 2,FMS,FMS,2026-07-23,2026-09-01,0,Idea,,UTRGV,General Ledger
+IDEA0001080,Idea,Idea HCM 4,HCM,HCM,2026-08-04,2027-01-31,0,Idea,,UTS,Human Resources
+IDEA0001082,Idea,Idea HCM 5,HCM,HCM,2026-08-04,2026-11-30,0,Idea,,UTS,Time and Labor
+IDEA0001083,Idea,Idea HCM 6,HCM,HCM,2026-08-04,2026-11-30,0,Idea,,"UTS, UTA",Time and Labor
+IDEA0001084,Idea,Idea HCM 7,HCM,HCM,2026-08-04,2026-11-30,0,Idea,,UTS,Time and Labor
+IDEA0001106,Idea,Idea FMS 3,FMS,FMS,2026-08-11,2026-12-01,0,Idea,,"UTRGV, UTS",General Ledger
+IDEA0001111,Idea,Idea HCM 8,HCM,HCM,2026-08-13,2026-08-13,0,Idea,,"UTS, UTA",Absence Management
+IDEA0001112,Idea,Idea HCM 9,HCM,HCM,2026-08-14,2026-08-14,0,Idea,,UTT,Human Resources
+IDEA0001115,Idea,Idea FMS 4,FMS,FMS,2026-08-19,2026-11-01,0,Idea,,"UTRGV, UTEP",Grants Management
+IDEA0001127,Idea,Idea FMS 5,FMS,FMS,2026-09-15,2026-09-15,0,Idea,,UTPB,Purchasing / ePro
+IDEA0001128,Idea,Idea FMS 6,FMS,FMS,2026-09-15,2026-09-15,0,Idea,,UTEP,General Ledger
+IDEA0001129,Idea,Idea FMS 7,FMS,FMS,2026-09-17,2026-10-01,0,Idea,,UTRGV,General Ledger
+IDEA0001138,Idea,Idea B&CS 1,B&CS,B&CS,2026-09-30,2027-05-31,0,Idea,,UTS,ServiceNow
+IDEA0001175,Idea,Idea SIS SERVICES 1,SIS SERVICES,SIS SERVICES,2026-10-27,2026-10-27,0,Idea,,UTS,Intelligent Automation Services (IAS)
+IDEA0001178,Idea,Idea SIS SERVICES 2,SIS SERVICES,SIS SERVICES,2026-10-27,2026-10-27,0,Idea,,UTS,Intelligent Automation Services (IAS)
+IDEA0001183,Idea,Idea SIS SERVICES 3,SIS SERVICES,SIS SERVICES,2026-11-04,2026-11-04,0,Idea,,UTS,Intelligent Automation Services (IAS)
