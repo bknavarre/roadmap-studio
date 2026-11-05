@@ -1,10 +1,12 @@
-# Roadmap Studio v0.6
+# Roadmap Studio v0.8
+Built directly from the v0.6 layout.
 
-- APPS, INFRA, OTIS, OTISCS, and SI roll into the OTIS roadmap and retain Category sections.
-- SIS SERVICES rolls into B&CS.
-- Category then State then start-date hierarchy.
-- Origin suffix only appears on impacted roadmap memberships.
-- Every item has a ServiceNow deep link in its details drawer.
-- Source-of-truth fields are view-only.
-
-Upload all contents to the repository root and preserve `.github/workflows/deploy.yml`.
+Changes:
+- Preserves the v0.6 Gantt geometry and cascade rows.
+- Left category block is blue only around the category name; the area below is white.
+- Uses actual imported titles for all 585 roadmap memberships.
+- Global and per-view Fiscal Year (Sep-Aug), Calendar Year, and Custom date ranges.
+- 1-4 fiscal-year spans.
+- Collapsible Done section with Closed Complete, Closed Incomplete, and Closed Skipped.
+- Future out-of-view summary by FY; past records remain in the data pool without warnings.
+- Palette and State ordering persist in this browser.
