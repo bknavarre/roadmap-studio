@@ -1,12 +1,17 @@
-# Roadmap Studio v0.4
+# Roadmap Studio v0.5
+Built from the latest four ServiceNow exports using normalization rules from roadmunk_SN_transfer_v2.py.
 
-Privacy-safe Gantt release using the latest four ServiceNow Excel exports.
+## Deploy
+Replace the repository contents with this package, preserving `.github/workflows/deploy.yml`. Commit to `main`; GitHub Actions will deploy the site.
 
-## Replace GitHub files
-Upload all contents to the repository root, preserving `.github/workflows/deploy.yml`.
-If the repository name is not `roadmap-studio`, change `base` in `vite.config.js`.
-
-## Privacy approach
-Actual source titles are excluded. Each source record receives a stable-in-this-build alias such as `Project FMS 23`. The real project number remains visible. Cross-pillar memberships show the originating pillar as an italic suffix, for example `Project FMS 23 *FMS*` on BI.
-
-`public/privacy_mapping.csv` is included for internal verification. Remove it before deployment if the alias-to-number mapping itself should not be downloadable. The deployed UI does not load this CSV.
+## Implemented
+- Permanent Cascade layout, one record per line
+- State swimlanes, globally reorderable
+- Start-date sorting inside every State
+- Demand/Enhancement/Idea canonical roadmap States
+- SWIS records excluded from Campus portfolios
+- Python pillar/date/FY/status normalization
+- Masked titles with project number and completion
+- Originating-pillar suffix on impacted-pillar views
+- All imported detail fields, descriptions, and ServiceNow deep links
+- Dashboard pillar counts
