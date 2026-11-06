@@ -1,10 +1,8 @@
-# Roadmap Studio v0.6
+# Roadmap Studio Recovery Baseline
+Full source package restored from the uniquely named working v10 main source.
 
-- APPS, INFRA, OTIS, OTISCS, and SI roll into the OTIS roadmap and retain Category sections.
-- SIS SERVICES rolls into B&CS.
-- Category then State then start-date hierarchy.
-- Origin suffix only appears on impacted roadmap memberships.
-- Every item has a ServiceNow deep link in its details drawer.
-- Source-of-truth fields are view-only.
+Keeps the last two confirmed changes:
+1. Dashboard label is Roadmap Projects.
+2. At Risk means End Date is before today.
 
-Upload all contents to the repository root and preserve `.github/workflows/deploy.yml`.
+No WIP-only layout/color experiment is included. The original Gantt/Cascade rendering and existing clipped-bar shadow are preserved.
