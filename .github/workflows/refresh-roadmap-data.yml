@@ -2,69 +2,159 @@ name: Refresh Roadmap Data
 
 on:
   push:
+    branches: [main]
     paths:
-      - "roadmap_sources/**"
-
+      - 'roadmap_sources/**'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# Power Automate writes the four workbooks as separate commits. Each newer
+# source commit cancels the older waiting run, so the final run processes the
+# completed batch rather than running Python four times.
 concurrency:
-  group: roadmap-data-refresh
-  cancel-in-progress: false
+  group: sis-roadmap-data-refresh
+  cancel-in-progress: true
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Allow source batch to settle
+        run: sleep 90
+
+      - name: Checkout latest main
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
-      - name: Setup Python
+      - name: Verify four source workbooks are present and current
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess, sys
+          from datetime import datetime, timezone
+
+          files = [
+              'roadmap_sources/PMO Daily Roadmunk - Projects.xlsx',
+              'roadmap_sources/PMO Daily Roadmunk - Demands.xlsx',
+              'roadmap_sources/PMO Daily Roadmunk - Enhancements.xlsx',
+              'roadmap_sources/PMO Daily Roadmunk - Ideas.xlsx',
+          ]
+
+          times = []
+          for path in files:
+              try:
+                  raw = subprocess.check_output(
+                      ['git', 'log', '-1', '--format=%cI', '--', path],
+                      text=True,
+                  ).strip()
+              except subprocess.CalledProcessError:
+                  raw = ''
+              if not raw:
+                  print(f'::error::No Git history found for {path}')
+                  sys.exit(1)
+              when = datetime.fromisoformat(raw.replace('Z', '+00:00'))
+              times.append((path, when))
+              print(f'{path}: {when.astimezone(timezone.utc).isoformat()}')
+
+          oldest = min(t for _, t in times)
+          newest = max(t for _, t in times)
+          spread_minutes = (newest - oldest).total_seconds() / 60
+          print(f'Source batch spread: {spread_minutes:.1f} minutes')
+
+          if spread_minutes > 20:
+              print('::notice::All four files exist, but they do not appear to be from the same <=20-minute delivery batch. Leaving the current published roadmap unchanged.')
+              # Successful stop: this is an incomplete batch, not a broken workflow.
+              with open('/tmp/source_batch_ready', 'w') as f:
+                  f.write('false')
+          else:
+              with open('/tmp/source_batch_ready', 'w') as f:
+                  f.write('true')
+          PY
+
+      - name: Check batch gate
+        id: gate
+        shell: bash
+        run: |
+          value="$(cat /tmp/source_batch_ready)"
+          echo "ready=$value" >> "$GITHUB_OUTPUT"
+          echo "Batch ready: $value"
+
+      - name: Set up Python
+        if: steps.gate.outputs.ready == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
           cache: pip
           cache-dependency-path: roadmap_pipeline/requirements.txt
 
-      - name: Install dependencies
-        run: pip install -r roadmap_pipeline/requirements.txt
+      - name: Install pipeline dependencies
+        if: steps.gate.outputs.ready == 'true'
+        run: python -m pip install -r roadmap_pipeline/requirements.txt
 
-      - name: Verify source files
-        run: |
-          test -f "roadmap_sources/PMO Daily Roadmunk - Projects.xlsx"
-          test -f "roadmap_sources/PMO Daily Roadmunk - Demands.xlsx"
-          test -f "roadmap_sources/PMO Daily Roadmunk - Enhancements.xlsx"
-          test -f "roadmap_sources/PMO Daily Roadmunk - Ideas.xlsx"
-
-      - name: Transform ServiceNow data
+      - name: Transform ServiceNow source files
+        if: steps.gate.outputs.ready == 'true'
+        shell: bash
         run: |
           mkdir -p build
-
           python roadmap_pipeline/roadmap_transform.py \
             --input-dir roadmap_sources \
             --output build/roadmap_data.json \
             --status build/roadmap_status.json
 
-      - name: Compare and promote data
+      - name: Promote validated roadmap outputs
+        if: steps.gate.outputs.ready == 'true'
+        shell: bash
         run: |
-          python roadmap_pipeline/promote_if_changed.py
+          python - <<'PY'
+          import json, shutil, sys
+          from pathlib import Path
 
-      - name: Commit changed roadmap data
+          data = Path('build/roadmap_data.json')
+          status = Path('build/roadmap_status.json')
+          if not data.exists() or not status.exists():
+              print('::error::Transformer did not produce both required JSON files.')
+              sys.exit(1)
+
+          payload = json.loads(data.read_text(encoding='utf-8'))
+          meta = json.loads(status.read_text(encoding='utf-8'))
+
+          # Accept either the historical list format or an object containing records.
+          records = payload if isinstance(payload, list) else payload.get('records', [])
+          line_count = len(records)
+          source_count = meta.get('sourceRecords', 0)
+
+          print(f'Validated source records: {source_count}')
+          print(f'Validated roadmap lines: {line_count}')
+
+          if source_count < 350:
+              print(f'::error::Refusing publish: source record count {source_count} is below safety floor 350.')
+              sys.exit(1)
+          if line_count < 450:
+              print(f'::error::Refusing publish: roadmap line count {line_count} is below safety floor 450.')
+              sys.exit(1)
+
+          Path('public').mkdir(exist_ok=True)
+          shutil.copy2(data, 'public/roadmap_data.json')
+          shutil.copy2(status, 'public/roadmap_status.json')
+          PY
+
+      - name: Commit refreshed roadmap JSON
+        if: steps.gate.outputs.ready == 'true'
+        shell: bash
         run: |
           git add public/roadmap_data.json public/roadmap_status.json
 
           if git diff --cached --quiet; then
-            echo "No roadmap data changes."
+            echo 'No published roadmap changes to commit.'
             exit 0
           fi
 
-          git config user.name "SIS Roadmap Automation"
-          git config user.email "roadmap-automation@users.noreply.github.com"
-
-          git commit -m "Automated roadmap data refresh"
-          git push
+          git config user.name 'SIS Roadmap Automation'
+          git config user.email 'roadmap-automation@users.noreply.github.com'
+          git commit -m 'Automated roadmap data refresh'
+          git push origin HEAD:main
