@@ -17,3 +17,12 @@ nav{display:grid;grid-template-columns:repeat(3,1fr);width:100%}nav button{justi
 .app{--side-width:240px}.roadmap-side{position:relative;width:var(--side-width);min-width:var(--side-width);transition:width .2s ease,min-width .2s ease;padding-right:14px}.side-toggle{position:absolute!important;right:-14px;top:45px!important;width:28px!important;height:28px;padding:0!important;border:1px solid #d7dde3!important;border-radius:50%!important;background:#fff!important;display:flex!important;align-items:center;justify-content:center;z-index:20;box-shadow:0 2px 6px #17203318}.app.side-collapsed{--side-width:24px}.app.side-collapsed .roadmap-side{overflow:visible;padding-left:0;padding-right:0}.app.side-collapsed .roadmap-side h4,.app.side-collapsed .roadmap-side button:not(:first-child):not(.side-toggle){display:none}.app.side-collapsed .roadmap-side>button:first-child{position:absolute;top:8px;left:2px;width:20px!important;overflow:hidden;padding:7px 2px!important;color:transparent}.app.side-collapsed .roadmap-side>button:first-child svg{color:#536174;min-width:15px}.app.side-collapsed .side-toggle{display:flex!important;right:-14px;top:45px!important;color:#536174!important}
 /* Fit all selected months/FYs into the available roadmap panel, Roadmunk-style, instead of requiring horizontal scrolling. */
 .fit-timeline{min-width:100%!important;width:100%}.fit-timeline .months-head section{display:grid!important;grid-template-columns:repeat(var(--month-count,1),minmax(0,1fr))}.fit-timeline .months-head span{min-width:0!important}
+/* Collapsible menu v2: physically resize the drawer and keep the toggle above the map. */
+.app{--side-width:var(--side-open-width,200px)}
+.roadmap-side{box-sizing:border-box;flex:0 0 var(--side-width)!important;width:var(--side-width)!important;min-width:var(--side-width)!important;max-width:var(--side-width)!important;transition:flex-basis .2s ease,width .2s ease,min-width .2s ease,max-width .2s ease;overflow:visible!important;z-index:30;background:#fff}
+.content{position:relative;z-index:1;min-width:0;flex:1 1 auto!important}
+.side-toggle{z-index:100!important;right:-15px!important;box-shadow:0 2px 8px rgba(23,32,51,.24)!important}
+.app.side-collapsed{--side-width:24px!important}
+.app.side-collapsed .roadmap-side{flex-basis:24px!important;width:24px!important;min-width:24px!important;max-width:24px!important;border-right:1px solid #e3e7eb}
+.app.side-collapsed .content{width:calc(100% - 24px)!important}
+.app.side-collapsed .side-toggle{right:-15px!important;z-index:100!important}
