@@ -1,4 +1,4 @@
-name: Deploy Roadmap Studio v10.5
+name: Deploy Roadmap Studio v10.5.1
 on:
   push:
     branches: [main]
@@ -19,22 +19,25 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Apply v10.5 two-change patch
+      - name: Make WIP overview entirely green
         shell: python
         run: |
           from pathlib import Path
           p = Path("src/main.jsx")
           s = p.read_text(encoding="utf-8")
-          old_risk = "const isAtRisk=r=>!DONE.includes(r.status)&&((dt(r.end)&&dt(r.end)<new Date()&&Number(r.progress)<100)||['Yellow','Red','Past Due'].includes(r.risk));"
-          new_risk = "const isAtRisk=r=>dt(r.end)&&dt(r.end)<new Date();"
-          if old_risk not in s:
-              raise SystemExit("Expected v10 At Risk logic was not found; refusing to patch a different source version.")
-          s = s.replace(old_risk, new_risk, 1)
-          if "'Roadmap Lines'" not in s:
-              raise SystemExit("Expected v10 Roadmap Lines label was not found; refusing to patch a different source version.")
-          s = s.replace("'Roadmap Lines'", "'Roadmap Projects'")
+          # Apply only inside the Work in Progress dashboard roadmap.
+          target1 = "<h3><span>{cat}</span></h3>"
+          replace1 = "<h3><span style={dashboardFilter==='Work in Progress'?{background:eff.colors['Work in Progress']}:undefined}>{cat}</span></h3>"
+          target2 = "style={{background:eff.colors[st]||'#aab5bd'}}"
+          replace2 = "style={{background:dashboardFilter==='Work in Progress'?eff.colors['Work in Progress']:(eff.colors[st]||'#aab5bd')}}"
+          target3 = "c=eff.colors[st]||'#7895a6'"
+          replace3 = "c=dashboardFilter==='Work in Progress'?eff.colors['Work in Progress']:(eff.colors[st]||'#7895a6')"
+          for target, replacement, name in [(target1,replace1,'category header'),(target2,replace2,'secondary header'),(target3,replace3,'project bar')]:
+              if target not in s:
+                  raise SystemExit(f"Expected v10 source pattern not found for {name}; refusing to alter a different version.")
+              s = s.replace(target, replacement)
           p.write_text(s, encoding="utf-8")
-          print("v10.5 patch applied: Roadmap Projects label + end-date-only At Risk logic")
+          print("Applied WIP-only green styling. No CSS or layout files changed.")
       - run: npm ci
       - run: npm run build
       - uses: actions/configure-pages@v5
