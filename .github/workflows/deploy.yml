@@ -1,49 +1,46 @@
-name: Deploy Roadmap Studio v10.5.1
+name: Deploy Roadmap Studio
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - name: Make WIP overview entirely green
-        shell: python
-        run: |
-          from pathlib import Path
-          p = Path("src/main.jsx")
-          s = p.read_text(encoding="utf-8")
-          # Apply only inside the Work in Progress dashboard roadmap.
-          target1 = "<h3><span>{cat}</span></h3>"
-          replace1 = "<h3><span style={dashboardFilter==='Work in Progress'?{background:eff.colors['Work in Progress']}:undefined}>{cat}</span></h3>"
-          target2 = "style={{background:eff.colors[st]||'#aab5bd'}}"
-          replace2 = "style={{background:dashboardFilter==='Work in Progress'?eff.colors['Work in Progress']:(eff.colors[st]||'#aab5bd')}}"
-          target3 = "c=eff.colors[st]||'#7895a6'"
-          replace3 = "c=dashboardFilter==='Work in Progress'?eff.colors['Work in Progress']:(eff.colors[st]||'#7895a6')"
-          for target, replacement, name in [(target1,replace1,'category header'),(target2,replace2,'secondary header'),(target3,replace3,'project bar')]:
-              if target not in s:
-                  raise SystemExit(f"Expected v10 source pattern not found for {name}; refusing to alter a different version.")
-              s = s.replace(target, replacement)
-          p.write_text(s, encoding="utf-8")
-          print("Applied WIP-only green styling. No CSS or layout files changed.")
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   deploy:
     environment:
       name: github-pages
@@ -51,5 +48,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - id: deployment
+      - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
