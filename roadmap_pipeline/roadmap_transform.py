@@ -26,12 +26,30 @@ def latest(folder:Path, pattern:str)->Path:
     if not files: raise FileNotFoundError(f'Missing source: {pattern}')
     return max(files,key=lambda p:p.stat().st_mtime)
 
+def clean_text_encoding(value):
+    """Repair known UTF-8/Windows-1252 mojibake sequences conservatively."""
+    text = str(value or "")
+    replacements = {
+        "â€œ": "“",
+        "â€�": "”",
+        "â€˜": "‘",
+        "â€™": "’",
+        "â€“": "–",
+        "â€”": "—",
+        "â€¦": "…",
+        "Â ": " ",
+        "Â": "",
+    }
+    for bad, good in replacements.items():
+        text = text.replace(bad, good)
+    return text
+
 def clean_description(v):
     s=str(v or ''); m=re.search(r"href=['\"]([^'\"]+)['\"]",s)
     link=html.unescape(m.group(1)) if m else ''
     text=re.sub(r'<br\s*/?>','\n',s,flags=re.I);text=re.sub(r'<[^>]+>','',text);text=html.unescape(text)
     text=re.sub(r'\n\s*(Project|Idea) Link:.*','',text,flags=re.I|re.S).strip()
-    return text,link
+    return clean_text_encoding(text),link
 
 def build(input_dir:Path):
     frames=[]; sources={}
@@ -54,13 +72,13 @@ def build(input_dir:Path):
         num=str(r['SN Project Number']);typ=str(r['Type']);pillar=str(r['Pillar']);origin=str(r['Originating Pillar']);category=str(r['Category'])
         desc,link=clean_description(r.get('Description_Raw',''))
         if not link:link=f'https://utsystem.service-now.com/{ENDPOINT[typ]}.do?sysparm_query=number={num}'
-        title=str(r.get('Raw_Title') or r.get('Title') or aliases[num]).strip()
+        title=clean_text_encoding(r.get('Raw_Title') or r.get('Title') or aliases[num]).strip()
         items.append({'id':str(r['External ID']),'number':num,'type':typ,'title':title,'alias':aliases[num],
           'origin':origin,'pillar':pillar,'category':category,'originSuffix':'' if pillar==origin else f'*{origin}*',
           'start':str(r.get('Start Date','')),'end':str(r.get('End Date','')),'progress':int(float(r.get('% Complete',0) or 0)),
           'status':str(r.get('Status','')),'risk':str(r.get('Risk','')),'active':str(r.get('Active','')),
-          'fiscalYear':str(r.get('Cleaned_Fiscal_Year_Value','')),'campus':str(r.get('Campus','')),'teams':str(r.get('Teams','')),
-          'fc':str(r.get('Functional Committee','')),'manager':str(r.get('Project Manager','')),'plannedDate':str(r.get('Planned Date','')),
+          'fiscalYear':str(r.get('Cleaned_Fiscal_Year_Value','')),'campus':clean_text_encoding(r.get('Campus','')),'teams':clean_text_encoding(r.get('Teams','')),
+          'fc':clean_text_encoding(r.get('Functional Committee','')),'manager':clean_text_encoding(r.get('Project Manager','')),'plannedDate':str(r.get('Planned Date','')),
           'description':desc,'serviceNowUrl':link})
     payload={'generated':datetime.now(timezone.utc).isoformat(),'sourceCount':source_count,'expandedCount':len(items),'items':items}
     validate(payload)

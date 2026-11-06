@@ -7,6 +7,10 @@ from urllib.parse import quote
 import pandas as pd
 
 SERVICENOW_BASE_URL = "https://utsystem.service-now.com"
+PROJECT_ENDPOINT = "pm_project"
+DEMAND_ENDPOINT = "dmn_demand"
+ENHANCEMENT_ENDPOINT = "rm_enhancement"
+IDEA_ENDPOINT = "idea"
 STATE_TO_STATUS = {
     "Work in Progress":"Work in Progress", "Open":"Open", "Pending":"Pending",
     "Closed Complete":"Closed Complete", "Closed Incomplete":"Closed Incomplete",
