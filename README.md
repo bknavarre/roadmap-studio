@@ -1,8 +1,10 @@
-# Roadmap Studio Recovery Baseline
-Full source package restored from the uniquely named working v10 main source.
-
-Keeps the last two confirmed changes:
-1. Dashboard label is Roadmap Projects.
-2. At Risk means End Date is before today.
-
-No WIP-only layout/color experiment is included. The original Gantt/Cascade rendering and existing clipped-bar shadow are preserved.
+# Roadmap Studio v0.10
+- Roadmaps overview: Pillar then State.
+- FC overview: FC then State; Campus overview: Campus then State.
+- Dashboard metrics open requested all-pillar filtered roadmaps.
+- At Risk includes active, incomplete records with end dates before today, plus Yellow/Red/Past Due.
+- Portfolio records deduplicate by ServiceNow number.
+- SWIS roadmap groups by Campus; FC portfolios by Campus; Campus portfolios by Pillar.
+- Clipped bars square/shadow the left edge; labels have added left clearance.
+- Dashboard settings are Global only; individual views add Done-only and default Done expansion.
+- Published pillar subtitle removed.
