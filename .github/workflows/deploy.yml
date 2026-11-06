@@ -1,4 +1,4 @@
-name: Deploy Roadmap Studio v0.4
+name: Deploy Roadmap Studio v10.5
 on:
   push:
     branches: [main]
@@ -18,7 +18,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+          cache: npm
+      - name: Apply v10.5 two-change patch
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path("src/main.jsx")
+          s = p.read_text(encoding="utf-8")
+          old_risk = "const isAtRisk=r=>!DONE.includes(r.status)&&((dt(r.end)&&dt(r.end)<new Date()&&Number(r.progress)<100)||['Yellow','Red','Past Due'].includes(r.risk));"
+          new_risk = "const isAtRisk=r=>dt(r.end)&&dt(r.end)<new Date();"
+          if old_risk not in s:
+              raise SystemExit("Expected v10 At Risk logic was not found; refusing to patch a different source version.")
+          s = s.replace(old_risk, new_risk, 1)
+          if "'Roadmap Lines'" not in s:
+              raise SystemExit("Expected v10 Roadmap Lines label was not found; refusing to patch a different source version.")
+          s = s.replace("'Roadmap Lines'", "'Roadmap Projects'")
+          p.write_text(s, encoding="utf-8")
+          print("v10.5 patch applied: Roadmap Projects label + end-date-only At Risk logic")
+      - run: npm ci
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
