@@ -1,0 +1,66 @@
+name: Refresh Roadmap Data from OneDrive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: roadmap-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout roadmap-studio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: roadmap_pipeline/requirements.txt
+
+      - name: Install pipeline dependencies
+        run: pip install -r roadmap_pipeline/requirements.txt
+
+      - name: Download four current workbooks from OneDrive
+        env:
+          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
+          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
+          MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
+          ONEDRIVE_USER: ${{ secrets.ONEDRIVE_USER }}
+          ONEDRIVE_FOLDER: SIS Roadmap/Current
+          ROADMAP_SOURCE_DIR: roadmap_sources
+        run: python roadmap_pipeline/onedrive_download.py
+
+      - name: Transform ServiceNow reports
+        run: |
+          mkdir -p build
+          python roadmap_pipeline/roadmap_transform.py \
+            --input-dir roadmap_sources \
+            --output build/roadmap_data.json \
+            --status build/roadmap_status.json
+
+      - name: Promote only changed normalized data
+        run: python roadmap_pipeline/promote_if_changed.py
+
+      - name: Commit changed roadmap JSON
+        run: |
+          git add public/roadmap_data.json public/roadmap_status.json
+          if git diff --cached --quiet; then
+            echo "No roadmap changes to commit."
+            exit 0
+          fi
+          git config user.name "SIS Roadmap Automation"
+          git config user.email "roadmap-automation@users.noreply.github.com"
+          git commit -m "Automated roadmap data refresh"
+          git push
