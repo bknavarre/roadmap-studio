@@ -6,14 +6,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: sis-roadmap-data-processing
+  group: sis-roadmap-refresh-and-deploy
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  refresh-build-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout latest main
@@ -23,7 +28,6 @@ jobs:
           fetch-depth: 0
 
       - name: Verify four source workbooks are present
-        shell: bash
         run: |
           test -f "roadmap_sources/PMO Daily Roadmunk - Projects.xlsx"
           test -f "roadmap_sources/PMO Daily Roadmunk - Demands.xlsx"
@@ -37,21 +41,18 @@ jobs:
           cache: pip
           cache-dependency-path: roadmap_pipeline/requirements.txt
 
-      - name: Install pipeline dependencies
+      - name: Install Python dependencies
         run: python -m pip install -r roadmap_pipeline/requirements.txt
 
       - name: Transform ServiceNow source files
-        shell: bash
         run: |
           mkdir -p build
-
           python roadmap_pipeline/roadmap_transform.py \
             --input-dir roadmap_sources \
             --output build/roadmap_data.json \
             --status build/roadmap_status.json
 
       - name: Calculate New Updated Deleted
-        shell: bash
         run: |
           python roadmap_pipeline/roadmap_change_summary.py \
             public/roadmap_data.json \
@@ -59,78 +60,70 @@ jobs:
             build/roadmap_status.json
 
       - name: Validate and promote roadmap outputs
-        shell: bash
         run: |
           python - <<'PY'
-          import json
-          import shutil
-          import sys
+          import json, shutil, sys
           from pathlib import Path
 
-          data = Path("build/roadmap_data.json")
-          status = Path("build/roadmap_status.json")
-
+          data = Path('build/roadmap_data.json')
+          status = Path('build/roadmap_status.json')
           if not data.is_file() or not status.is_file():
-              print("::error::Transformer did not produce both required JSON files.")
+              print('::error::Transformer did not produce both required JSON files.')
               sys.exit(1)
 
-          # Confirm both files are valid JSON.
-          json.loads(data.read_text(encoding="utf-8"))
-          meta = json.loads(status.read_text(encoding="utf-8"))
-
-          source_count = int(meta.get("sourceRecords", 0))
-          line_count = int(meta.get("roadmapLines", 0))
-          changes = meta.get("changes", {})
-
-          print(f"Validated source records: {source_count}")
-          print(f"Validated roadmap lines: {line_count}")
-          print(
-              f"New={changes.get('new', 0)} "
-              f"Updated={changes.get('updated', 0)} "
-              f"Deleted={changes.get('deleted', 0)}"
-          )
+          json.loads(data.read_text(encoding='utf-8'))
+          meta = json.loads(status.read_text(encoding='utf-8'))
+          source_count = int(meta.get('sourceRecords', 0))
+          line_count = int(meta.get('roadmapLines', 0))
+          changes = meta.get('changes', {})
+          print(f'Validated source records: {source_count}')
+          print(f'Validated roadmap lines: {line_count}')
+          print(f"New={changes.get('new',0)} Updated={changes.get('updated',0)} Deleted={changes.get('deleted',0)}")
 
           if source_count < 350:
-              print(
-                  f"::error::Refusing publish: source record count "
-                  f"{source_count} is below 350."
-              )
+              print(f'::error::Refusing publish: source record count {source_count} is below 350.')
               sys.exit(1)
-
           if line_count < 450:
-              print(
-                  f"::error::Refusing publish: roadmap line count "
-                  f"{line_count} is below 450."
-              )
+              print(f'::error::Refusing publish: roadmap line count {line_count} is below 450.')
               sys.exit(1)
 
-          Path("public").mkdir(exist_ok=True)
-
-          shutil.copy2(
-              data,
-              "public/roadmap_data.json"
-          )
-
-          # Always promote the successful status file.
-          # This lets Refresh time advance even for 0 new / 0 updated / 0 deleted.
-          shutil.copy2(
-              status,
-              "public/roadmap_status.json"
-          )
+          Path('public').mkdir(exist_ok=True)
+          shutil.copy2(data, 'public/roadmap_data.json')
+          shutil.copy2(status, 'public/roadmap_status.json')
           PY
 
       - name: Commit processed roadmap JSON
-        shell: bash
         run: |
           git add public/roadmap_data.json public/roadmap_status.json
-
-          if git diff --cached --quiet; then
-            echo "No output files changed."
-            exit 0
+          if ! git diff --cached --quiet; then
+            git config user.name 'SIS Roadmap Automation'
+            git config user.email 'roadmap-automation@users.noreply.github.com'
+            git commit -m 'Automated roadmap data refresh'
+            git push origin HEAD:main
+          else
+            echo 'No JSON differences to commit; continuing to build/deploy this successful run.'
           fi
 
-          git config user.name "SIS Roadmap Automation"
-          git config user.email "roadmap-automation@users.noreply.github.com"
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-          git commit -m "Automated roadmap data refresh"
-          git push origin HEAD:main
+      - name: Install web dependencies
+        run: npm ci
+
+      - name: Build Roadmap Studio
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy Roadmap Studio to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
