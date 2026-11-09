@@ -2,11 +2,6 @@ name: Refresh Roadmap Data
 run-name: Process complete ServiceNow source batch
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'roadmap_sources/READY.txt'
-
   workflow_dispatch:
 
 permissions:
