@@ -10,9 +10,6 @@ on:
 permissions:
   contents: write
 
-# Power Automate writes the four workbooks as separate commits. Each newer
-# source commit cancels the older waiting run, so the final run processes the
-# completed batch rather than running Python four times.
 concurrency:
   group: sis-roadmap-data-refresh
   cancel-in-progress: true
@@ -37,6 +34,7 @@ jobs:
           python - <<'PY'
           import subprocess, sys
           from datetime import datetime, timezone
+          from pathlib import Path
 
           files = [
               'roadmap_sources/PMO Daily Roadmunk - Projects.xlsx',
@@ -47,13 +45,12 @@ jobs:
 
           times = []
           for path in files:
-              try:
-                  raw = subprocess.check_output(
-                      ['git', 'log', '-1', '--format=%cI', '--', path],
-                      text=True,
-                  ).strip()
-              except subprocess.CalledProcessError:
-                  raw = ''
+              if not Path(path).is_file():
+                  print(f'::error::Missing source workbook: {path}')
+                  sys.exit(1)
+              raw = subprocess.check_output(
+                  ['git', 'log', '-1', '--format=%cI', '--', path], text=True
+              ).strip()
               if not raw:
                   print(f'::error::No Git history found for {path}')
                   sys.exit(1)
@@ -66,14 +63,11 @@ jobs:
           spread_minutes = (newest - oldest).total_seconds() / 60
           print(f'Source batch spread: {spread_minutes:.1f} minutes')
 
+          Path('/tmp/source_batch_ready').write_text(
+              'true' if spread_minutes <= 20 else 'false', encoding='utf-8'
+          )
           if spread_minutes > 20:
-              print('::notice::All four files exist, but they do not appear to be from the same <=20-minute delivery batch. Leaving the current published roadmap unchanged.')
-              # Successful stop: this is an incomplete batch, not a broken workflow.
-              with open('/tmp/source_batch_ready', 'w') as f:
-                  f.write('false')
-          else:
-              with open('/tmp/source_batch_ready', 'w') as f:
-                  f.write('true')
+              print('::notice::The four workbooks are more than 20 minutes apart. Keeping the last successfully published roadmap.')
           PY
 
       - name: Check batch gate
@@ -106,7 +100,7 @@ jobs:
             --output build/roadmap_data.json \
             --status build/roadmap_status.json
 
-      - name: Promote validated roadmap outputs
+      - name: Validate and promote roadmap outputs
         if: steps.gate.outputs.ready == 'true'
         shell: bash
         run: |
@@ -116,17 +110,16 @@ jobs:
 
           data = Path('build/roadmap_data.json')
           status = Path('build/roadmap_status.json')
-          if not data.exists() or not status.exists():
+          if not data.is_file() or not status.is_file():
               print('::error::Transformer did not produce both required JSON files.')
               sys.exit(1)
 
-          payload = json.loads(data.read_text(encoding='utf-8'))
+          # Confirm both files are valid JSON.
+          json.loads(data.read_text(encoding='utf-8'))
           meta = json.loads(status.read_text(encoding='utf-8'))
 
-          # Accept either the historical list format or an object containing records.
-          records = payload if isinstance(payload, list) else payload.get('records', [])
-          line_count = len(records)
-          source_count = meta.get('sourceRecords', 0)
+          source_count = int(meta.get('sourceRecords', 0))
+          line_count = int(meta.get('roadmapLines', 0))
 
           print(f'Validated source records: {source_count}')
           print(f'Validated roadmap lines: {line_count}')
