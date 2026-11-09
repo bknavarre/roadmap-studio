@@ -100,6 +100,15 @@ jobs:
             --output build/roadmap_data.json \
             --status build/roadmap_status.json
 
+      - name: Calculate source-record changes
+        if: steps.gate.outputs.ready == 'true'
+        shell: bash
+        run: |
+          python roadmap_pipeline/roadmap_change_summary.py \
+            public/roadmap_data.json \
+            build/roadmap_data.json \
+            build/roadmap_status.json
+
       - name: Validate and promote roadmap outputs
         if: steps.gate.outputs.ready == 'true'
         shell: bash
