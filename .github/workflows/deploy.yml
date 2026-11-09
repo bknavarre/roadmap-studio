@@ -1,57 +1,110 @@
-name: Deploy Roadmap Studio v0.10
-run-name: Deploy processed Roadmap Studio site
+name: Refresh Roadmap Data
+run-name: Process complete ServiceNow source batch
 
 on:
   push:
     branches: [main]
     paths:
-      - 'src/**'
-      - 'public/**'
-      - 'index.html'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'vite.config.js'
-      - '.github/workflows/deploy.yml'
+      - 'roadmap_sources/READY.txt'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: sis-roadmap-data-processing
+  cancel-in-progress: false
 
 jobs:
-  build:
+  refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout latest main
         uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+          ref: main
+          fetch-depth: 0
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Verify four source workbooks are present
+        shell: bash
+        run: |
+          test -f "roadmap_sources/PMO Daily Roadmunk - Projects.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Demands.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Enhancements.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Ideas.xlsx"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: roadmap_pipeline/requirements.txt
+
+      - name: Install pipeline dependencies
+        run: python -m pip install -r roadmap_pipeline/requirements.txt
+
+      - name: Transform ServiceNow source files
+        shell: bash
+        run: |
+          mkdir -p build
+          python roadmap_pipeline/roadmap_transform.py \
+            --input-dir roadmap_sources \
+            --output build/roadmap_data.json \
+            --status build/roadmap_status.json
+
+      - name: Calculate New Updated Deleted
+        shell: bash
+        run: |
+          python roadmap_pipeline/roadmap_change_summary.py \
+            public/roadmap_data.json \
+            build/roadmap_data.json \
+            build/roadmap_status.json
+
+      - name: Validate and promote roadmap outputs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, shutil, sys
+          from pathlib import Path
+
+          data = Path('build/roadmap_data.json')
+          status = Path('build/roadmap_status.json')
+          if not data.is_file() or not status.is_file():
+              print('::error::Transformer did not produce both required JSON files.')
+              sys.exit(1)
+
+          json.loads(data.read_text(encoding='utf-8'))
+          meta = json.loads(status.read_text(encoding='utf-8'))
+          source_count = int(meta.get('sourceRecords', 0))
+          line_count = int(meta.get('roadmapLines', 0))
+          changes = meta.get('changes', {})
+
+          print(f'Validated source records: {source_count}')
+          print(f'Validated roadmap lines: {line_count}')
+          print(f"New={changes.get('new',0)} Updated={changes.get('updated',0)} Deleted={changes.get('deleted',0)}")
+
+          if source_count < 350:
+              print(f'::error::Refusing publish: source record count {source_count} is below 350.')
+              sys.exit(1)
+          if line_count < 450:
+              print(f'::error::Refusing publish: roadmap line count {line_count} is below 450.')
+              sys.exit(1)
+
+          Path('public').mkdir(exist_ok=True)
+          shutil.copy2(data, 'public/roadmap_data.json')
+          # Always promote status, even for 0/0/0, so Refresh time advances.
+          shutil.copy2(status, 'public/roadmap_status.json')
+          PY
+
+      - name: Commit processed roadmap JSON
+        shell: bash
+        run: |
+          git add public/roadmap_data.json public/roadmap_status.json
+          if git diff --cached --quiet; then
+            echo 'No output files changed.'
+            exit 0
+          fi
+          git config user.name 'SIS Roadmap Automation'
+          git config user.email 'roadmap-automation@users.noreply.github.com'
+          git commit -m 'Automated roadmap data refresh'
+          git push origin HEAD:main
