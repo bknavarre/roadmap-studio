@@ -1,85 +1,41 @@
 name: Refresh Roadmap Data
+run-name: Process complete ServiceNow source batch
 
 on:
   push:
     branches: [main]
     paths:
-      - 'roadmap_sources/**'
+      - 'roadmap_sources/READY.txt'
+
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: sis-roadmap-data-refresh
-  cancel-in-progress: true
+  group: sis-roadmap-data-processing
+  cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Allow source batch to settle
-        run: sleep 90
-
       - name: Checkout latest main
         uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
 
-      - name: Verify four source workbooks are present and current
+      - name: Verify four source workbooks are present
         shell: bash
         run: |
-          python - <<'PY'
-          import subprocess, sys
-          from datetime import datetime, timezone
-          from pathlib import Path
-
-          files = [
-              'roadmap_sources/PMO Daily Roadmunk - Projects.xlsx',
-              'roadmap_sources/PMO Daily Roadmunk - Demands.xlsx',
-              'roadmap_sources/PMO Daily Roadmunk - Enhancements.xlsx',
-              'roadmap_sources/PMO Daily Roadmunk - Ideas.xlsx',
-          ]
-
-          times = []
-          for path in files:
-              if not Path(path).is_file():
-                  print(f'::error::Missing source workbook: {path}')
-                  sys.exit(1)
-              raw = subprocess.check_output(
-                  ['git', 'log', '-1', '--format=%cI', '--', path], text=True
-              ).strip()
-              if not raw:
-                  print(f'::error::No Git history found for {path}')
-                  sys.exit(1)
-              when = datetime.fromisoformat(raw.replace('Z', '+00:00'))
-              times.append((path, when))
-              print(f'{path}: {when.astimezone(timezone.utc).isoformat()}')
-
-          oldest = min(t for _, t in times)
-          newest = max(t for _, t in times)
-          spread_minutes = (newest - oldest).total_seconds() / 60
-          print(f'Source batch spread: {spread_minutes:.1f} minutes')
-
-          Path('/tmp/source_batch_ready').write_text(
-              'true' if spread_minutes <= 20 else 'false', encoding='utf-8'
-          )
-          if spread_minutes > 20:
-              print('::notice::The four workbooks are more than 20 minutes apart. Keeping the last successfully published roadmap.')
-          PY
-
-      - name: Check batch gate
-        id: gate
-        shell: bash
-        run: |
-          value="$(cat /tmp/source_batch_ready)"
-          echo "ready=$value" >> "$GITHUB_OUTPUT"
-          echo "Batch ready: $value"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Projects.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Demands.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Enhancements.xlsx"
+          test -f "roadmap_sources/PMO Daily Roadmunk - Ideas.xlsx"
 
       - name: Set up Python
-        if: steps.gate.outputs.ready == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -87,67 +43,99 @@ jobs:
           cache-dependency-path: roadmap_pipeline/requirements.txt
 
       - name: Install pipeline dependencies
-        if: steps.gate.outputs.ready == 'true'
         run: python -m pip install -r roadmap_pipeline/requirements.txt
 
       - name: Transform ServiceNow source files
-        if: steps.gate.outputs.ready == 'true'
         shell: bash
         run: |
           mkdir -p build
+
           python roadmap_pipeline/roadmap_transform.py \
             --input-dir roadmap_sources \
             --output build/roadmap_data.json \
             --status build/roadmap_status.json
 
+      - name: Calculate New Updated Deleted
+        shell: bash
+        run: |
+          python roadmap_pipeline/roadmap_change_summary.py \
+            public/roadmap_data.json \
+            build/roadmap_data.json \
+            build/roadmap_status.json
+
       - name: Validate and promote roadmap outputs
-        if: steps.gate.outputs.ready == 'true'
         shell: bash
         run: |
           python - <<'PY'
-          import json, shutil, sys
+          import json
+          import shutil
+          import sys
           from pathlib import Path
 
-          data = Path('build/roadmap_data.json')
-          status = Path('build/roadmap_status.json')
+          data = Path("build/roadmap_data.json")
+          status = Path("build/roadmap_status.json")
+
           if not data.is_file() or not status.is_file():
-              print('::error::Transformer did not produce both required JSON files.')
+              print("::error::Transformer did not produce both required JSON files.")
               sys.exit(1)
 
           # Confirm both files are valid JSON.
-          json.loads(data.read_text(encoding='utf-8'))
-          meta = json.loads(status.read_text(encoding='utf-8'))
+          json.loads(data.read_text(encoding="utf-8"))
+          meta = json.loads(status.read_text(encoding="utf-8"))
 
-          source_count = int(meta.get('sourceRecords', 0))
-          line_count = int(meta.get('roadmapLines', 0))
+          source_count = int(meta.get("sourceRecords", 0))
+          line_count = int(meta.get("roadmapLines", 0))
+          changes = meta.get("changes", {})
 
-          print(f'Validated source records: {source_count}')
-          print(f'Validated roadmap lines: {line_count}')
+          print(f"Validated source records: {source_count}")
+          print(f"Validated roadmap lines: {line_count}")
+          print(
+              f"New={changes.get('new', 0)} "
+              f"Updated={changes.get('updated', 0)} "
+              f"Deleted={changes.get('deleted', 0)}"
+          )
 
           if source_count < 350:
-              print(f'::error::Refusing publish: source record count {source_count} is below safety floor 350.')
-              sys.exit(1)
-          if line_count < 450:
-              print(f'::error::Refusing publish: roadmap line count {line_count} is below safety floor 450.')
+              print(
+                  f"::error::Refusing publish: source record count "
+                  f"{source_count} is below 350."
+              )
               sys.exit(1)
 
-          Path('public').mkdir(exist_ok=True)
-          shutil.copy2(data, 'public/roadmap_data.json')
-          shutil.copy2(status, 'public/roadmap_status.json')
+          if line_count < 450:
+              print(
+                  f"::error::Refusing publish: roadmap line count "
+                  f"{line_count} is below 450."
+              )
+              sys.exit(1)
+
+          Path("public").mkdir(exist_ok=True)
+
+          shutil.copy2(
+              data,
+              "public/roadmap_data.json"
+          )
+
+          # Always promote the successful status file.
+          # This lets Refresh time advance even for 0 new / 0 updated / 0 deleted.
+          shutil.copy2(
+              status,
+              "public/roadmap_status.json"
+          )
           PY
 
-      - name: Commit refreshed roadmap JSON
-        if: steps.gate.outputs.ready == 'true'
+      - name: Commit processed roadmap JSON
         shell: bash
         run: |
           git add public/roadmap_data.json public/roadmap_status.json
 
           if git diff --cached --quiet; then
-            echo 'No published roadmap changes to commit.'
+            echo "No output files changed."
             exit 0
           fi
 
-          git config user.name 'SIS Roadmap Automation'
-          git config user.email 'roadmap-automation@users.noreply.github.com'
-          git commit -m 'Automated roadmap data refresh'
+          git config user.name "SIS Roadmap Automation"
+          git config user.email "roadmap-automation@users.noreply.github.com"
+
+          git commit -m "Automated roadmap data refresh"
           git push origin HEAD:main
