@@ -1,87 +1,68 @@
 {
-  "lastSuccessfulRefresh": "2026-11-10T14:02:08.392944+00:00",
+  "lastSuccessfulRefresh": "2026-11-10T15:03:02.304746+00:00",
   "sourceRecords": 452,
   "roadmapLines": 590,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 332,
-      "modifiedUtc": "2026-11-10T14:01:54.105756+00:00"
+      "modifiedUtc": "2026-11-10T15:02:50.387398+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 52,
-      "modifiedUtc": "2026-11-10T14:01:54.105519+00:00"
+      "modifiedUtc": "2026-11-10T15:02:50.387035+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-10T14:01:54.105756+00:00"
+      "modifiedUtc": "2026-11-10T15:02:50.387398+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-10T14:01:54.105756+00:00"
+      "modifiedUtc": "2026-11-10T15:02:50.387398+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 49,
+    "updated": 6,
     "deleted": 0
   },
   "changeRecords": {
     "new": [],
     "updated": [
-      "PRJ0010071",
-      "PRJ0022852",
-      "PRJ0025948",
-      "PRJ0026662",
-      "PRJ0027136",
-      "PRJ0027190",
-      "PRJ0028203",
-      "PRJ0028470",
-      "PRJ0028789",
-      "PRJ0029655",
-      "PRJ0029820",
-      "PRJ0030022",
+      "PRJ0010094",
+      "PRJ0026512",
       "PRJ0030498",
-      "PRJ0030768",
-      "PRJ0030924",
-      "PRJ0031100",
-      "PRJ0031450",
-      "PRJ0031547",
       "PRJ0032103",
-      "PRJ0032383",
-      "PRJ0032829",
-      "PRJ0032833",
-      "PRJ0033427",
-      "PRJ0035103",
-      "PRJ0035119",
-      "PRJ0035122",
-      "PRJ0035149",
-      "PRJ0035232",
-      "PRJ0035586",
-      "PRJ0035589",
-      "PRJ0035594",
-      "PRJ0035602",
-      "PRJ0035622",
-      "PRJ0036384",
-      "PRJ0036390",
-      "PRJ0036393",
-      "PRJ0036397",
-      "PRJ0036411",
-      "PRJ0036414",
-      "PRJ0036419",
-      "PRJ0036425",
-      "PRJ0036431",
-      "PRJ0036469",
-      "PRJ0036472",
-      "PRJ0036475",
-      "PRJ0036478",
-      "PRJ0036486",
-      "PRJ0037094",
-      "PRJ0037176"
+      "PRJ0032840",
+      "PRJ0035232"
     ],
     "deleted": []
-  }
+  },
+  "changeDetails": {
+    "status": 6
+  },
+  "updatedFieldsByProject": {
+    "PRJ0010094": [
+      "risk"
+    ],
+    "PRJ0026512": [
+      "progress"
+    ],
+    "PRJ0030498": [
+      "progress"
+    ],
+    "PRJ0032103": [
+      "progress"
+    ],
+    "PRJ0032840": [
+      "progress"
+    ],
+    "PRJ0035232": [
+      "progress"
+    ]
+  },
+  "changeCounting": "unique ServiceNow records (number), not expanded roadmap lines"
 }
