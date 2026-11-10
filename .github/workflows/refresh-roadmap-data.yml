@@ -92,16 +92,20 @@ jobs:
           shutil.copy2(status, 'public/roadmap_status.json')
           PY
 
-      - name: Commit processed roadmap JSON
+      - name: Generate Roadmap Link Directory
         run: |
-          git add public/roadmap_data.json public/roadmap_status.json
+          python roadmap_pipeline/generate_roadmap_links.py
+
+      - name: Commit processed roadmap outputs
+        run: |
+          git add public/roadmap_data.json public/roadmap_status.json public/roadmap_links.html public/roadmap_links.csv
           if ! git diff --cached --quiet; then
             git config user.name 'SIS Roadmap Automation'
             git config user.email 'roadmap-automation@users.noreply.github.com'
             git commit -m 'Automated roadmap data refresh'
             git push origin HEAD:main
           else
-            echo 'No JSON differences to commit; continuing to build/deploy this successful run.'
+            echo 'No roadmap output differences to commit; continuing to build/deploy this successful run.'
           fi
 
       - name: Set up Node
