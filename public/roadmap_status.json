@@ -1,51 +1,56 @@
 {
-  "lastSuccessfulRefresh": "2026-11-10T19:03:38.482110+00:00",
+  "lastSuccessfulRefresh": "2026-11-10T20:01:27.227717+00:00",
   "sourceRecords": 452,
   "roadmapLines": 590,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 332,
-      "modifiedUtc": "2026-11-10T19:03:26.865818+00:00"
+      "modifiedUtc": "2026-11-10T20:01:13.215139+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 52,
-      "modifiedUtc": "2026-11-10T19:03:26.865509+00:00"
+      "modifiedUtc": "2026-11-10T20:01:13.214815+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-10T19:03:26.865818+00:00"
+      "modifiedUtc": "2026-11-10T20:01:13.215139+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-10T19:03:26.865818+00:00"
+      "modifiedUtc": "2026-11-10T20:01:13.215139+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 2,
+    "updated": 3,
     "deleted": 0
   },
   "changeRecords": {
     "new": [],
     "updated": [
-      "PRJ0024032",
-      "PRJ0033427"
+      "DMND0001463",
+      "PRJ0018715",
+      "PRJ0027318"
     ],
     "deleted": []
   },
   "changeDetails": {
-    "status": 2
+    "status": 2,
+    "organization": 1
   },
   "updatedFieldsByProject": {
-    "PRJ0024032": [
+    "DMND0001463": [
+      "campus"
+    ],
+    "PRJ0018715": [
       "risk"
     ],
-    "PRJ0033427": [
-      "progress"
+    "PRJ0027318": [
+      "risk"
     ]
   },
   "changeCounting": "unique ServiceNow records (number), not expanded roadmap lines"
