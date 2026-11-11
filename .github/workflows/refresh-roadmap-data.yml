@@ -171,3 +171,40 @@ jobs:
           with urllib.request.urlopen(request, timeout=30) as response:
               print(f"Power Automate notification sent successfully: HTTP {response.status}")
           PY
+      - name: Notify Power Automate of failed refresh
+        if: ${{ failure() }}
+        env:
+          POWER_AUTOMATE_ROADMAP_WEBHOOK: ${{ secrets.POWER_AUTOMATE_ROADMAP_WEBHOOK }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          payload = {
+              'created_count': 0,
+              'updated_count': 0,
+              'deleted_count': 0,
+              'error_count': 1,
+              'rejections_list': (
+                  'Roadmap Studio refresh failed. '
+                  'Check the Refresh Roadmap Data workflow in GitHub Actions '
+                  'for the failed step and error details.'
+              )
+          }
+
+          print('Sending Roadmap Studio failure notification to Power Automate.')
+
+          request = urllib.request.Request(
+              os.environ['POWER_AUTOMATE_ROADMAP_WEBHOOK'],
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type': 'application/json'},
+              method='POST'
+          )
+
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print(
+                  f'Power Automate failure notification sent: '
+                  f'HTTP {response.status}'
+              )
+          PY
