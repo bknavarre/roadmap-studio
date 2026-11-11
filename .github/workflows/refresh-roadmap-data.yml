@@ -131,3 +131,43 @@ jobs:
       - name: Deploy Roadmap Studio to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify Power Automate of successful refresh
+        env:
+          POWER_AUTOMATE_ROADMAP_WEBHOOK: ${{ secrets.POWER_AUTOMATE_ROADMAP_WEBHOOK }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          with open('public/roadmap_status.json', encoding='utf-8') as f:
+              status = json.load(f)
+
+          changes = status.get('changes', {})
+
+          payload = {
+              'created_count': int(changes.get('new', 0)),
+              'updated_count': int(changes.get('updated', 0)),
+              'deleted_count': int(changes.get('deleted', 0)),
+              'error_count': 0,
+              'rejections_list': ''
+          }
+
+          print(
+              f"Sending to Power Automate: "
+              f"New={payload['created_count']} "
+              f"Updated={payload['updated_count']} "
+              f"Deleted={payload['deleted_count']}"
+          )
+
+          request = urllib.request.Request(
+              os.environ['POWER_AUTOMATE_ROADMAP_WEBHOOK'],
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type': 'application/json'},
+              method='POST'
+          )
+
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print(f"Power Automate notification sent successfully: HTTP {response.status}")
+          PY
