@@ -1,49 +1,45 @@
 {
-  "lastSuccessfulRefresh": "2026-11-12T15:02:26.924562+00:00",
+  "lastSuccessfulRefresh": "2026-11-12T16:01:45.101220+00:00",
   "sourceRecords": 452,
   "roadmapLines": 590,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 338,
-      "modifiedUtc": "2026-11-12T15:02:15.764819+00:00"
+      "modifiedUtc": "2026-11-12T16:01:28.068917+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 46,
-      "modifiedUtc": "2026-11-12T15:02:15.764511+00:00"
+      "modifiedUtc": "2026-11-12T16:01:28.068662+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-12T15:02:15.764819+00:00"
+      "modifiedUtc": "2026-11-12T16:01:28.068917+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-12T15:02:15.764819+00:00"
+      "modifiedUtc": "2026-11-12T16:01:28.068917+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 2,
+    "updated": 1,
     "deleted": 0
   },
   "changeRecords": {
     "new": [],
     "updated": [
-      "PRJ0024261",
       "PRJ0032823"
     ],
     "deleted": []
   },
   "changeDetails": {
-    "status": 2
+    "status": 1
   },
   "updatedFieldsByProject": {
-    "PRJ0024261": [
-      "progress"
-    ],
     "PRJ0032823": [
       "progress"
     ]
