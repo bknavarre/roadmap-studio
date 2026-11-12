@@ -19,7 +19,8 @@ FILES={
  'Idea':'PMO Daily Roadmunk - Ideas*.xlsx',
 }
 ENDPOINT={'Project':'pm_project','Demand':'dmn_demand','Enhancement':'rm_enhancement','Idea':'idea'}
-ROLLUP={'APPS':'OTIS','INFRA':'OTIS','OTISCS':'OTIS','OTIS-CS':'OTIS','SI':'OTIS','SIS SERVICES':'B&CS'}
+ROLLUP={'APPS':'OTIS','INFRA':'OTIS','OTISCS':'OTIS','OTIS-CS':'OTIS','SIS SERVICES':'B&CS'}
+DIRECTOR_GROUP={'IAS':'IAS & SI','SI':'IAS & SI'}
 
 def latest(folder:Path, pattern:str)->Path:
     files=[p for p in folder.glob(pattern) if not p.name.startswith('~$')]
@@ -61,6 +62,8 @@ def build(input_dir:Path):
     source_count=int(df['SN Project Number'].nunique())
     df['Category']=df['Pillar'].astype(str)
     df['Pillar']=df['Pillar'].replace(ROLLUP);df['Originating Pillar']=df['Originating Pillar'].replace(ROLLUP)
+    # IAS and SI remain distinct source origins, but share one director-facing roadmap.
+    df['Pillar']=df['Pillar'].replace(DIRECTOR_GROUP)
     df['External ID']=df['SN Project Number'].astype(str)+'_'+df['Pillar'].astype(str)+'_'+df['Category'].astype(str)
     df=df.drop_duplicates('External ID').reset_index(drop=True)
     # Stable aliases retained only as fallback; current UI uses actual title.
@@ -74,10 +77,10 @@ def build(input_dir:Path):
         if not link:link=f'https://utsystem.service-now.com/{ENDPOINT[typ]}.do?sysparm_query=number={num}'
         title=clean_text_encoding(r.get('Raw_Title') or r.get('Title') or aliases[num]).strip()
         items.append({'id':str(r['External ID']),'number':num,'type':typ,'title':title,'alias':aliases[num],
-          'origin':origin,'pillar':pillar,'category':category,'originSuffix':'' if pillar==origin else f'*{origin}*',
+          'origin':origin,'pillar':pillar,'category':category,'originSuffix':'' if (pillar==origin or (pillar=='IAS & SI' and origin in {'IAS','SI'})) else f'*{origin}*',
           'start':str(r.get('Start Date','')),'end':str(r.get('End Date','')),'progress':int(float(r.get('% Complete',0) or 0)),
-          'status':str(r.get('Status','')),'risk':str(r.get('Risk','')),'active':str(r.get('Active','')),
-          'fiscalYear':str(r.get('Cleaned_Fiscal_Year_Value','')),'campus':clean_text_encoding(r.get('Campus','')),'teams':clean_text_encoding(r.get('Teams','')),
+          'status':str(r.get('Status','')),'state':clean_text_encoding(r.get('Idea State','')),'risk':str(r.get('Risk','')),'active':str(r.get('Active','')),
+          'implementationDate':str(r.get('Implementation Date','')),'fiscalYear':str(r.get('Cleaned_Fiscal_Year_Value','')),'campus':clean_text_encoding(r.get('Campus','')),'teams':clean_text_encoding(r.get('Teams','')),
           'fc':clean_text_encoding(r.get('Functional Committee','')),'manager':clean_text_encoding(r.get('Project Manager','')),'plannedDate':str(r.get('Planned Date','')),
           'description':desc,'serviceNowUrl':link})
     payload={'generated':datetime.now(timezone.utc).isoformat(),'sourceCount':source_count,'expandedCount':len(items),'items':items}

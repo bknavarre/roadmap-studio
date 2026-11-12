@@ -342,7 +342,7 @@ def process_ideas_df(df):
     df.columns = df.columns.str.strip()
     required = [
         "Number", "Title", "Department", "Portfolio", "Submitted by",
-        "Interested Companies", "Created", "Implementation Deadline",
+        "Interested Companies", "Created", "Implementation Deadline", "State",
         "Idea Development Escalation",
     ]
     missing = [column for column in required if column not in df.columns]
@@ -354,6 +354,8 @@ def process_ideas_df(df):
     out["Original ID"] = out["SN Project Number"]
     out["Type"] = "Idea"
     out["Status"] = "Idea"
+    out["Idea State"] = df["State"].fillna("").astype(str).str.strip()
+    out["Implementation Date"] = df["Implementation Deadline"].apply(normalize_date)
     out["Risk"] = ""
     out["Active"] = ""
     out["Raw_Title"] = df["Title"].fillna("No summary").astype(str).str.strip()
