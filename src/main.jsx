@@ -45,6 +45,7 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
  const[pillar,setPillar]=useState(pillars[0]||'');
  const[store,setStore]=useState(()=>{let s=safeJSON(NNL_KEY,{});return{order:s.order||{},bucket:s.bucket||{}}});
  const[drag,setDrag]=useState(null);
+ const[over,setOver]=useState(null);
  useEffect(()=>{
   let liveIds=new Set(data.filter(x=>!DONE.includes(x.status)).map(x=>x.id));
   let nb={...store.bucket},changed=false;
@@ -82,9 +83,12 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
  const moveCard=(id,toBucket,toIndex)=>{
   let fromBucket=effBucket(byId[id]);
   if(!fromBucket)return;
-  let fromList=buckets.find(b=>b.key===fromBucket).items.map(x=>x.id).filter(x=>x!==id);
+  let fromFull=buckets.find(b=>b.key===fromBucket).items.map(x=>x.id);
+  let fromIdx=fromFull.indexOf(id);
+  let adjIndex=(fromBucket===toBucket&&fromIdx>-1&&fromIdx<toIndex)?toIndex-1:toIndex;
+  let fromList=fromFull.filter(x=>x!==id);
   let toList=fromBucket===toBucket?fromList:(buckets.find(b=>b.key===toBucket).items.map(x=>x.id).filter(x=>x!==id));
-  let idx=Math.max(0,Math.min(toIndex,toList.length));
+  let idx=Math.max(0,Math.min(adjIndex,toList.length));
   toList=[...toList.slice(0,idx),id,...toList.slice(idx)];
   let nextOrder={...store.order,[pillar]:{...(store.order[pillar]||{}),[toBucket]:toList}};
   if(fromBucket!==toBucket)nextOrder[pillar]={...nextOrder[pillar],[fromBucket]:fromList};
@@ -94,22 +98,26 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
  };
  const color=st=>cfg.colors?.[st]||'#7895a6';
  const fmt=d=>{if(!d)return'No date';let x=new Date(`${String(d).slice(0,10)}T00:00:00`);return x.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
- const onDropAt=(e,bk,idx)=>{e.preventDefault();e.stopPropagation();if(!drag)return;moveCard(drag.id,bk,idx);setDrag(null)};
- const card=(x,bk,idx)=><div key={x.id}
+ const onDropAt=(e,bk,idx)=>{e.preventDefault();e.stopPropagation();if(!drag)return;moveCard(drag.id,bk,over&&over.bucket===bk?over.index:idx);setDrag(null);setOver(null)};
+ const line=(bk,idx)=>(drag&&over&&over.bucket===bk&&over.index===idx)?<div style={{height:3,margin:'0 0 8px',borderRadius:2,background:'#294f68'}}/>:null;
+ const card=(x,bk,idx)=><div key={x.id}>
+  {line(bk,idx)}
+  <div
    draggable
    onDragStart={e=>{setDrag({id:x.id});e.dataTransfer.effectAllowed='move'}}
-   onDragEnd={()=>setDrag(null)}
-   onDragOver={e=>{e.preventDefault();e.dataTransfer.dropEffect='move'}}
+   onDragEnd={()=>{setDrag(null);setOver(null)}}
+   onDragOver={e=>{e.preventDefault();e.stopPropagation();e.dataTransfer.dropEffect='move';let rect=e.currentTarget.getBoundingClientRect(),after=(e.clientY-rect.top)>rect.height/2;setOver({bucket:bk,index:after?idx+1:idx})}}
    onDrop={e=>onDropAt(e,bk,idx)}
    onClick={()=>open(x)}
    style={{background:'#fff',border:`1px solid ${color(x.status)}`,borderLeft:`4px solid ${color(x.status)}`,borderRadius:7,padding:'10px 11px',marginBottom:8,cursor:'grab',boxShadow:drag?.id===x.id?'0 0 0 2px #294f68':'0 1px 2px rgba(20,35,50,.06)',opacity:drag?.id===x.id?.4:1}}>
-  <strong style={{display:'block',fontSize:12,lineHeight:1.3,color:nativeToPillar(x)?'#223746':'#5f707b',fontWeight:nativeToPillar(x)?700:400}}>{x.title}{x.originSuffix&&<em> {x.originSuffix}</em>}</strong>
-  <span style={{display:'block',fontSize:10,color:'#657887',marginTop:3}}>{x.number} · {fmt(x.start)} → {fmt(x.end)}</span>
-  <div style={{display:'flex',gap:6,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
-   <span style={{fontSize:9,padding:'3px 6px',borderRadius:999,background:`${color(x.status)}22`,color:dark(color(x.status),.28)}}>{x.type==='Idea'?(x.state||'Idea'):x.status}</span>
-   {x.type==='Project'&&<span style={{fontSize:9,color:'#748590'}}>{x.progress??0}%</span>}
-   {x.fc&&<span style={{fontSize:9,color:'#748590'}}>{x.fc}</span>}
-   {x.manager&&<span style={{fontSize:9,color:'#748590'}}>{x.manager}</span>}
+   <strong style={{display:'block',fontSize:12,lineHeight:1.3,color:nativeToPillar(x)?'#223746':'#5f707b',fontWeight:nativeToPillar(x)?700:400}}>{x.title}{x.originSuffix&&<em> {x.originSuffix}</em>}</strong>
+   <span style={{display:'block',fontSize:10,color:'#657887',marginTop:3}}>{x.number} · {fmt(x.start)} → {fmt(x.end)}</span>
+   <div style={{display:'flex',gap:6,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
+    <span style={{fontSize:9,padding:'3px 6px',borderRadius:999,background:`${color(x.status)}22`,color:dark(color(x.status),.28)}}>{x.type==='Idea'?(x.state||'Idea'):x.status}</span>
+    {x.type==='Project'&&<span style={{fontSize:9,color:'#748590'}}>{x.progress??0}%</span>}
+    {x.fc&&<span style={{fontSize:9,color:'#748590'}}>{x.fc}</span>}
+    {x.manager&&<span style={{fontSize:9,color:'#748590'}}>{x.manager}</span>}
+   </div>
   </div>
  </div>;
  return <main style={{height:'calc(100vh - 96px)',width:'100%',background:'#f7f9fb',padding:'18px 22px 24px',display:'flex',flexDirection:'column',overflow:'hidden'}}>
@@ -128,9 +136,10 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
      </div>
      <small style={{color:'#72828d',fontSize:11}}>{b.sub}</small>
     </div>
-    <div onDragOver={e=>e.preventDefault()} onDrop={e=>onDropAt(e,b.key,b.items.length)} style={{padding:12,overflow:'auto',flex:'1 1 auto',minHeight:120}}>
+    <div onDragOver={e=>{e.preventDefault();setOver({bucket:b.key,index:b.items.length})}} onDrop={e=>onDropAt(e,b.key,b.items.length)} style={{padding:12,overflow:'auto',flex:'1 1 auto',minHeight:120}}>
      {b.items.map((x,i)=>card(x,b.key,i))}
-     {b.items.length===0&&<div onDragOver={e=>e.preventDefault()} onDrop={e=>onDropAt(e,b.key,0)} style={{border:'1px dashed #dce3e8',borderRadius:7,padding:'18px 10px',textAlign:'center',color:'#9aa6ae',fontSize:12}}>Drop here</div>}
+     {line(b.key,b.items.length)}
+     {b.items.length===0&&<div onDragOver={e=>{e.preventDefault();e.stopPropagation();setOver({bucket:b.key,index:0})}} onDrop={e=>onDropAt(e,b.key,0)} style={{border:'1px dashed #dce3e8',borderRadius:7,padding:'18px 10px',textAlign:'center',color:'#9aa6ae',fontSize:12}}>Drop here</div>}
     </div>
    </div>)}
   </div>
