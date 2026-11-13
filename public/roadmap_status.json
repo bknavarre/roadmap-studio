@@ -1,91 +1,46 @@
 {
-  "lastSuccessfulRefresh": "2026-11-13T16:03:27.265319+00:00",
+  "lastSuccessfulRefresh": "2026-11-13T17:02:10.268352+00:00",
   "sourceRecords": 454,
   "roadmapLines": 592,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 339,
-      "modifiedUtc": "2026-11-13T16:03:08.757624+00:00"
+      "modifiedUtc": "2026-11-13T17:01:58.945183+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 47,
-      "modifiedUtc": "2026-11-13T16:03:08.757357+00:00"
+      "modifiedUtc": "2026-11-13T17:01:58.944855+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-13T16:03:08.757624+00:00"
+      "modifiedUtc": "2026-11-13T17:01:58.945183+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-13T16:03:08.757624+00:00"
+      "modifiedUtc": "2026-11-13T17:01:58.945183+00:00"
     }
   },
   "changes": {
-    "new": 2,
-    "updated": 11,
+    "new": 0,
+    "updated": 1,
     "deleted": 0
   },
   "changeRecords": {
-    "new": [
-      "DMND0001483",
-      "PRJ0037563"
-    ],
+    "new": [],
     "updated": [
-      "DMND0001439",
-      "PRJ0010093",
-      "PRJ0010110",
-      "PRJ0020133",
-      "PRJ0024033",
-      "PRJ0028293",
-      "PRJ0032103",
-      "PRJ0032840",
-      "PRJ0033427",
-      "PRJ0034407",
-      "PRJ0034461"
+      "PRJ0011922"
     ],
     "deleted": []
   },
   "changeDetails": {
-    "status": 10,
-    "title/type": 1
+    "status": 1
   },
   "updatedFieldsByProject": {
-    "DMND0001439": [
-      "title"
-    ],
-    "PRJ0010093": [
-      "risk"
-    ],
-    "PRJ0010110": [
-      "progress"
-    ],
-    "PRJ0020133": [
-      "progress"
-    ],
-    "PRJ0024033": [
-      "progress",
-      "status"
-    ],
-    "PRJ0028293": [
-      "progress"
-    ],
-    "PRJ0032103": [
-      "progress"
-    ],
-    "PRJ0032840": [
-      "progress"
-    ],
-    "PRJ0033427": [
-      "progress"
-    ],
-    "PRJ0034407": [
-      "progress"
-    ],
-    "PRJ0034461": [
+    "PRJ0011922": [
       "progress"
     ]
   },
