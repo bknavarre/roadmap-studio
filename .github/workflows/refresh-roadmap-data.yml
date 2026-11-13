@@ -131,3 +131,59 @@ jobs:
       - name: Deploy Roadmap Studio to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify Power Automate of successful refresh
+        if: ${{ success() }}
+        env:
+          POWER_AUTOMATE_ROADMAP_WEBHOOK: ${{ secrets.POWER_AUTOMATE_ROADMAP_WEBHOOK }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          status = json.loads(Path('build/roadmap_status.json').read_text(encoding='utf-8'))
+          changes = status.get('changes', {})
+          payload = {
+              'created_count': int(changes.get('new', 0)),
+              'updated_count': int(changes.get('updated', 0)),
+              'deleted_count': int(changes.get('deleted', 0)),
+              'error_count': 0,
+              'rejections_list': ''
+          }
+          url = os.environ.get('POWER_AUTOMATE_ROADMAP_WEBHOOK', '').strip()
+          if not url:
+              raise SystemExit('POWER_AUTOMATE_ROADMAP_WEBHOOK is empty or unavailable.')
+          req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers={'Content-Type': 'application/json'}, method='POST')
+          with urllib.request.urlopen(req, timeout=30) as response:
+              print(f'Power Automate success notification sent: HTTP {response.status}')
+              print(f"Counts sent: New={payload['created_count']} Updated={payload['updated_count']} Deleted={payload['deleted_count']}")
+          PY
+
+      - name: Notify Power Automate of failed refresh
+        if: ${{ failure() }}
+        env:
+          POWER_AUTOMATE_ROADMAP_FAILURE_WEBHOOK: ${{ secrets.POWER_AUTOMATE_ROADMAP_FAILURE_WEBHOOK }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_NUMBER: ${{ github.run_number }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          run_url = f"https://github.com/{os.environ['REPOSITORY']}/actions/runs/{os.environ['RUN_ID']}"
+          payload = {
+              'workflow': os.environ.get('WORKFLOW_NAME', 'Refresh Roadmap Data'),
+              'status': 'failed',
+              'run_id': os.environ.get('RUN_ID', ''),
+              'run_number': os.environ.get('RUN_NUMBER', ''),
+              'run_url': run_url,
+              'repository': os.environ.get('REPOSITORY', ''),
+              'error_count': 1,
+              'rejections_list': f'GitHub Actions roadmap refresh failed. Review run: {run_url}'
+          }
+          url = os.environ.get('POWER_AUTOMATE_ROADMAP_FAILURE_WEBHOOK', '').strip()
+          if not url:
+              raise SystemExit('POWER_AUTOMATE_ROADMAP_FAILURE_WEBHOOK is empty or unavailable.')
+          req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers={'Content-Type': 'application/json'}, method='POST')
+          with urllib.request.urlopen(req, timeout=30) as response:
+              print(f'Power Automate failure notification sent: HTTP {response.status}')
+          PY
