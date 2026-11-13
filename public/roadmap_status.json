@@ -1,50 +1,77 @@
 {
-  "lastSuccessfulRefresh": "2026-11-13T15:02:43.047621+00:00",
-  "sourceRecords": 453,
-  "roadmapLines": 591,
+  "lastSuccessfulRefresh": "2026-11-13T15:47:25.594721+00:00",
+  "sourceRecords": 452,
+  "roadmapLines": 590,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
-      "rows": 339,
-      "modifiedUtc": "2026-11-13T15:02:29.186286+00:00"
+      "rows": 338,
+      "modifiedUtc": "2026-11-13T15:47:13.718550+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 46,
-      "modifiedUtc": "2026-11-13T15:02:29.185903+00:00"
+      "modifiedUtc": "2026-11-13T15:47:13.718173+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-13T15:02:29.186286+00:00"
+      "modifiedUtc": "2026-11-13T15:47:13.718550+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-13T15:02:29.186286+00:00"
+      "modifiedUtc": "2026-11-13T15:47:13.718550+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 2,
-    "deleted": 0
+    "updated": 8,
+    "deleted": 1
   },
   "changeRecords": {
     "new": [],
     "updated": [
-      "PRJ0030498",
-      "PRJ0032840"
+      "PRJ0010093",
+      "PRJ0010110",
+      "PRJ0024033",
+      "PRJ0028293",
+      "PRJ0032103",
+      "PRJ0032840",
+      "PRJ0034407",
+      "PRJ0034461"
     ],
-    "deleted": []
+    "deleted": [
+      "PRJ0037563"
+    ]
   },
   "changeDetails": {
-    "status": 2
+    "status": 8
   },
   "updatedFieldsByProject": {
-    "PRJ0030498": [
+    "PRJ0010093": [
+      "risk"
+    ],
+    "PRJ0010110": [
+      "progress"
+    ],
+    "PRJ0024033": [
+      "progress",
+      "status"
+    ],
+    "PRJ0028293": [
+      "progress"
+    ],
+    "PRJ0032103": [
       "progress"
     ],
     "PRJ0032840": [
+      "progress"
+    ],
+    "PRJ0034407": [
+      "progress"
+    ],
+    "PRJ0034461": [
       "progress"
     ]
   },
