@@ -46,6 +46,7 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
  const[store,setStore]=useState(()=>{let s=safeJSON(NNL_KEY,{});return{order:s.order||{},bucket:s.bucket||{}}});
  const[drag,setDrag]=useState(null);
  const[over,setOver]=useState(null);
+ const[landed,setLanded]=useState(null);
  useEffect(()=>{
   let liveIds=new Set(data.filter(x=>!DONE.includes(x.status)).map(x=>x.id));
   let nb={...store.bucket},changed=false;
@@ -62,6 +63,13 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
   });
   if(changed){let next={order:no,bucket:nb};setStore(next);localStorage.setItem(NNL_KEY,JSON.stringify(next))}
  },[data]);
+ useEffect(()=>{
+  if(typeof document==='undefined'||document.getElementById('nnl-anim-style'))return;
+  let st=document.createElement('style');
+  st.id='nnl-anim-style';
+  st.textContent=`@keyframes nnlDrop{0%{transform:scale(1.035);box-shadow:0 6px 14px rgba(41,79,104,.22)}60%{transform:scale(.995)}100%{transform:scale(1);box-shadow:0 1px 2px rgba(20,35,50,.06)}}`;
+  document.head.appendChild(st);
+ },[]);
  const persist=next=>{setStore(next);localStorage.setItem(NNL_KEY,JSON.stringify(next))};
  const rows=useMemo(()=>data.filter(x=>x.pillar===pillar&&!DONE.includes(x.status)),[data,pillar]);
  const byId=useMemo(()=>{let m={};rows.forEach(x=>m[x.id]=x);return m},[rows]);
@@ -95,6 +103,8 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
   let nextBucket={...store.bucket};
   if(fromBucket!==toBucket)nextBucket[id]=toBucket;
   persist({order:nextOrder,bucket:nextBucket});
+  setLanded({id,ts:Date.now()});
+  setTimeout(()=>setLanded(cur=>cur&&cur.id===id?null:cur),450);
  };
  const color=st=>cfg.colors?.[st]||'#7895a6';
  const fmt=d=>{if(!d)return'No date';let x=new Date(`${String(d).slice(0,10)}T00:00:00`);return x.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
@@ -109,7 +119,7 @@ function NowNextLaterBoard({data,cfg,pillars,back,open}){
    onDragOver={e=>{e.preventDefault();e.stopPropagation();e.dataTransfer.dropEffect='move';let rect=e.currentTarget.getBoundingClientRect(),after=(e.clientY-rect.top)>rect.height/2;setOver({bucket:bk,index:after?idx+1:idx})}}
    onDrop={e=>onDropAt(e,bk,idx)}
    onClick={()=>open(x)}
-   style={{background:'#fff',border:`1px solid ${color(x.status)}`,borderLeft:`4px solid ${color(x.status)}`,borderRadius:7,padding:'10px 11px',marginBottom:8,cursor:'grab',boxShadow:drag?.id===x.id?'0 0 0 2px #294f68':'0 1px 2px rgba(20,35,50,.06)',opacity:drag?.id===x.id?.4:1}}>
+   style={{background:'#fff',border:`1px solid ${color(x.status)}`,borderLeft:`4px solid ${color(x.status)}`,borderRadius:7,padding:'10px 11px',marginBottom:8,cursor:'grab',boxShadow:drag?.id===x.id?'0 0 0 2px #294f68':'0 1px 2px rgba(20,35,50,.06)',opacity:drag?.id===x.id?.4:1,animation:landed?.id===x.id?'nnlDrop .45s ease':'none'}}>
    <strong style={{display:'block',fontSize:12,lineHeight:1.3,color:nativeToPillar(x)?'#223746':'#5f707b',fontWeight:nativeToPillar(x)?700:400}}>{x.title}{x.originSuffix&&<em> {x.originSuffix}</em>}</strong>
    <span style={{display:'block',fontSize:10,color:'#657887',marginTop:3}}>{x.number} · {fmt(x.start)} → {fmt(x.end)}</span>
    <div style={{display:'flex',gap:6,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
