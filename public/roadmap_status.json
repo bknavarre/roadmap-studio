@@ -1,54 +1,129 @@
 {
-  "lastSuccessfulRefresh": "2026-11-14T00:02:18.528621+00:00",
-  "sourceRecords": 454,
-  "roadmapLines": 592,
+  "lastSuccessfulRefresh": "2026-11-14T02:53:52.681038+00:00",
+  "sourceRecords": 453,
+  "roadmapLines": 591,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 339,
-      "modifiedUtc": "2026-11-14T00:02:10.408901+00:00"
+      "modifiedUtc": "2026-11-14T02:53:42.079899+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
-      "rows": 47,
-      "modifiedUtc": "2026-11-14T00:02:10.408628+00:00"
+      "rows": 46,
+      "modifiedUtc": "2026-11-14T02:53:42.079564+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-14T00:02:10.408901+00:00"
+      "modifiedUtc": "2026-11-14T02:53:42.079899+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-14T00:02:10.408901+00:00"
+      "modifiedUtc": "2026-11-14T02:53:42.079899+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 3,
-    "deleted": 0
+    "updated": 21,
+    "deleted": 1
   },
   "changeRecords": {
     "new": [],
     "updated": [
+      "DMND0001439",
+      "PRJ0011922",
+      "PRJ0020133",
       "PRJ0024050",
       "PRJ0024703",
-      "PRJ0032829"
+      "PRJ0026464",
+      "PRJ0027136",
+      "PRJ0028206",
+      "PRJ0028293",
+      "PRJ0029655",
+      "PRJ0030022",
+      "PRJ0030498",
+      "PRJ0030722",
+      "PRJ0030727",
+      "PRJ0030919",
+      "PRJ0031100",
+      "PRJ0031772",
+      "PRJ0032103",
+      "PRJ0032823",
+      "PRJ0032829",
+      "PRJ0033427"
     ],
-    "deleted": []
+    "deleted": [
+      "DMND0001483"
+    ]
   },
   "changeDetails": {
-    "status": 3
+    "status": 20,
+    "title/type": 1
   },
   "updatedFieldsByProject": {
+    "DMND0001439": [
+      "title"
+    ],
+    "PRJ0011922": [
+      "progress"
+    ],
+    "PRJ0020133": [
+      "progress"
+    ],
     "PRJ0024050": [
       "progress"
     ],
     "PRJ0024703": [
       "progress"
     ],
+    "PRJ0026464": [
+      "progress"
+    ],
+    "PRJ0027136": [
+      "progress"
+    ],
+    "PRJ0028206": [
+      "progress"
+    ],
+    "PRJ0028293": [
+      "progress"
+    ],
+    "PRJ0029655": [
+      "progress"
+    ],
+    "PRJ0030022": [
+      "progress"
+    ],
+    "PRJ0030498": [
+      "progress"
+    ],
+    "PRJ0030722": [
+      "progress"
+    ],
+    "PRJ0030727": [
+      "progress"
+    ],
+    "PRJ0030919": [
+      "progress"
+    ],
+    "PRJ0031100": [
+      "progress"
+    ],
+    "PRJ0031772": [
+      "progress"
+    ],
+    "PRJ0032103": [
+      "progress"
+    ],
+    "PRJ0032823": [
+      "progress"
+    ],
     "PRJ0032829": [
+      "progress"
+    ],
+    "PRJ0033427": [
       "progress"
     ]
   },
