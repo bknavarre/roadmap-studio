@@ -1,4 +1,4 @@
-import React,{Component,useEffect,useLayoutEffect,useMemo,useRef,useState}from'react';import{createRoot}from'react-dom/client';import{ArrowDown,ArrowLeft,ArrowUp,ChevronDown,ChevronLeft,ChevronRight,ExternalLink,Landmark,Map,Search,Settings2,Users,X}from'lucide-react';import'./style.css';import{auth,enableLocalAuth,loginWithEmail,logout,onAuthStateChanged}from'./firebase.js';const PRINT_CSS=`@media print{@page{size:landscape;margin:5mm}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}.print-actions,header,.roadmap-side{display:none!important}body{background:#fff!important}.app,main,.content,.scroll{height:auto!important;max-height:none!important;overflow:visible!important;max-width:none!important}.content{width:100%!important}}`;if(typeof document!=='undefined'&&!document.getElementById('roadmap-print-style')){let st=document.createElement('style');st.id='roadmap-print-style';st.textContent=PRINT_CSS;document.head.appendChild(st)}
+import React,{Component,useEffect,useLayoutEffect,useMemo,useRef,useState}from'react';import{createRoot}from'react-dom/client';import{ArrowDown,ArrowLeft,ArrowUp,ChevronDown,ChevronLeft,ChevronRight,ExternalLink,Landmark,Map,Search,Settings2,Users,X}from'lucide-react';import'./style.css';import{auth,db,enableLocalAuth,loginWithEmail,logout,onAuthStateChanged,doc,onSnapshot,setDoc,serverTimestamp}from'./firebase.js';const PRINT_CSS=`@media print{@page{size:landscape;margin:5mm}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}.print-actions,header,.roadmap-side{display:none!important}body{background:#fff!important}.app,main,.content,.scroll{height:auto!important;max-height:none!important;overflow:visible!important;max-width:none!important}.content{width:100%!important}}`;if(typeof document!=='undefined'&&!document.getElementById('roadmap-print-style')){let st=document.createElement('style');st.id='roadmap-print-style';st.textContent=PRINT_CSS;document.head.appendChild(st)}
 const DAY=86400000,DONE=['Closed Complete','Closed Incomplete','Closed Skipped'],DEF={periodMode:'FY',startFY:(()=>{let d=new Date();return (d.getMonth()>=8?d.getFullYear()+1:d.getFullYear())%100})(),fyCount:1,calendarYear:2026,start:'2026-06-01',end:'2027-08-31',doneOnly:false,hideClosed:false,doneDefaultOpen:false,statusOrder:['Work in Progress','Pending','Open','Demand','Enhancement','Idea','Closed Complete','Closed Incomplete','Closed Skipped'],colors:{'Work in Progress':'#659376','Pending':'#bf80db','Open':'#769dbd','Demand':'#ddcf59','Enhancement':'#8dc7e1','Idea':'#817bd5','Closed Complete':'#aaa67a','Closed Incomplete':'#bb8d88','Closed Skipped':'#999da1'}};
 const safeJSON=(key,fallback)=>{try{let v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch{return fallback}};
 const dt=s=>s?new Date(String(s).slice(0,10)+'T00:00:00'):null,parts=s=>String(s||'').split(',').map(x=>x.trim()).filter(Boolean),closed=s=>String(s).startsWith('Closed');const nativeToPillar=r=>r?.pillar===r?.origin||(r?.pillar==='IAS & SI'&&['IAS','SI'].includes(r?.origin));const dark=(h,n=.22)=>{if(!/^#[0-9a-f]{6}$/i.test(h))return h;let x=parseInt(h.slice(1),16);return`rgb(${Math.round((x>>16)*(1-n))},${Math.round((x>>8&255)*(1-n))},${Math.round((x&255)*(1-n))})`};
@@ -46,7 +46,9 @@ function SwimlaneBoard({data,cfg,board,mode,setMode,back,open,published=false,co
 function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=false,copyLink}){
  const[pillar,setPillar]=useState(initialPillar||pillars[0]||'');
  const[topMode,setTopMode]=useState('All');
- const[store,setStore]=useState(()=>{let s=safeJSON(NNL_KEY,{});return{order:s.order||{},bucket:s.bucket||{}}});
+ const[store,setStore]=useState({order:{},bucket:{}});
+ const[saveState,setSaveState]=useState('Loading shared board…');
+ const[remoteReady,setRemoteReady]=useState(false);
  const[drag,setDrag]=useState(null);
  const[over,setOver]=useState(null);
  const[landed,setLanded]=useState(null);
@@ -54,22 +56,46 @@ function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=f
  const flipRects=useRef({});
  const pendingFlip=useRef(false);
  useEffect(()=>{
+  if(!pillar)return;
+  setRemoteReady(false);setSaveState('Loading shared board…');
+  const ref=doc(db,'nnlBoards',encodeURIComponent(pillar));
+  return onSnapshot(ref,snap=>{
+   if(snap.exists()){
+    const v=snap.data()||{};
+    setStore({order:{[pillar]:v.order||{}},bucket:v.bucket||{}});
+    setSaveState('Shared · Saved');
+   }else{
+    const local=safeJSON(NNL_KEY,{}),localOrder=local.order?.[pillar]||{},localBucket=local.bucket||{};
+    const initial={order:{[pillar]:localOrder},bucket:localBucket};
+    setStore(initial);
+    if(!published&&auth.currentUser){
+     setSaveState('Creating shared board…');
+     setDoc(ref,{pillar,order:localOrder,bucket:localBucket,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.email||'admin'},{merge:true})
+      .catch(err=>{console.error('NNL initial save failed',err);setSaveState('Save failed')});
+    }else setSaveState('Shared board not initialized');
+   }
+   setRemoteReady(true);
+  },err=>{console.error('NNL Firestore listener failed',err);setSaveState('Shared sync failed');setRemoteReady(true)});
+ },[pillar,published]);
+ useEffect(()=>{
+  if(!remoteReady||published)return;
   let liveIds=new Set(data.filter(x=>!DONE.includes(x.status)).map(x=>x.id));
   let nb={...store.bucket},changed=false;
   Object.keys(nb).forEach(id=>{if(!liveIds.has(id)){delete nb[id];changed=true}});
-  let no={};
-  Object.entries(store.order).forEach(([pk,buckets])=>{
-   let nk={};
-   Object.entries(buckets||{}).forEach(([bk,ids])=>{
-    let filtered=(ids||[]).filter(id=>liveIds.has(id));
-    if(filtered.length!==(ids||[]).length)changed=true;
-    nk[bk]=filtered;
-   });
-   no[pk]=nk;
-  });
-  if(changed){let next={order:no,bucket:nb};setStore(next);localStorage.setItem(NNL_KEY,JSON.stringify(next))}
- },[data]);
- const persist=next=>{setStore(next);localStorage.setItem(NNL_KEY,JSON.stringify(next))};
+  let current=store.order[pillar]||{},clean={};
+  Object.entries(current).forEach(([bk,ids])=>{let filtered=(ids||[]).filter(id=>liveIds.has(id));if(filtered.length!==(ids||[]).length)changed=true;clean[bk]=filtered});
+  if(changed)persist({order:{...store.order,[pillar]:clean},bucket:nb});
+ },[data,remoteReady]);
+ const persist=async next=>{
+  setStore(next);setSaveState('Saving…');
+  try{
+   await setDoc(doc(db,'nnlBoards',encodeURIComponent(pillar)),{
+    pillar,order:next.order[pillar]||{},bucket:next.bucket||{},updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.email||'admin'
+   },{merge:true});
+   localStorage.setItem(NNL_KEY,JSON.stringify(next));
+   setSaveState('Shared · Saved');
+  }catch(err){console.error('NNL save failed',err);setSaveState('Save failed');}
+ };
  const rows=useMemo(()=>data.filter(x=>x.pillar===pillar&&!DONE.includes(x.status)),[data,pillar]);
  const byId=useMemo(()=>{let m={};rows.forEach(x=>m[x.id]=x);return m},[rows]);
  const effBucket=x=>store.bucket[x.id]||defaultBucket(x.status);
@@ -132,44 +158,38 @@ function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=f
   st.textContent=`@keyframes nnlDrop{0%{transform:scale(1.05);box-shadow:0 8px 18px rgba(41,79,104,.3)}50%{transform:scale(.99)}100%{transform:scale(1);box-shadow:0 1px 2px rgba(20,35,50,.06)}}`;
   document.head.appendChild(st);
  },[]);
- const onCardDragOver=(e,bk,idx)=>{
-  e.preventDefault();e.stopPropagation();e.dataTransfer.dropEffect='move';
-  if(!drag)return;
-  let rect=e.currentTarget.getBoundingClientRect(),after=(e.clientY-rect.top)>rect.height/2;
-  let nextIndex=after?idx+1:idx;
-  if(over&&over.bucket===bk&&over.index===nextIndex)return;
-  beginFlip();setOver({bucket:bk,index:nextIndex});
+ const indexFromPointer=(container,clientY)=>{
+  const cards=[...container.querySelectorAll('[data-nnl-card="1"]')].filter(n=>n.dataset.dragging!=='1');
+  for(let i=0;i<cards.length;i++){let r=cards[i].getBoundingClientRect();if(clientY<r.top+r.height/2)return i}
+  return cards.length;
  };
- const onContainerDragOver=(e,bk,endIndex)=>{
-  e.preventDefault();
-  if(!drag)return;
-  if(over&&over.bucket===bk&&over.index===endIndex)return;
-  beginFlip();setOver({bucket:bk,index:endIndex});
- };
- const onDropAt=(e,bk,idx)=>{
-  e.preventDefault();e.stopPropagation();
-  if(!drag)return;
-  beginFlip();
-  moveCard(drag.id,bk,over&&over.bucket===bk?over.index:idx);
-  setDrag(null);setOver(null);
- };
- const onDragStart=(id,bk,idx)=>{
-  beginFlip();
-  setDrag({id});
+ const onColumnDragOver=(e,bk)=>{
+  if(published||!drag)return;
+  e.preventDefault();e.dataTransfer.dropEffect='move';
+  let idx=indexFromPointer(e.currentTarget,e.clientY);
+  if(over?.bucket===bk&&over?.index===idx)return;
   setOver({bucket:bk,index:idx});
  };
- const onDragEndCancel=()=>{
-  if(drag){beginFlip();setDrag(null);setOver(null)}
+ const onColumnDrop=(e,bk)=>{
+  if(published||!drag)return;
+  e.preventDefault();e.stopPropagation();
+  let idx=over?.bucket===bk?over.index:indexFromPointer(e.currentTarget,e.clientY);
+  beginFlip();moveCard(drag.id,bk,idx);setDrag(null);setOver(null);
  };
+ const onDragStart=(e,id,bk,idx)=>{
+  if(published){e.preventDefault();return}
+  e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',id);
+  setDrag({id});setOver({bucket:bk,index:idx});
+ };
+ const onDragEndCancel=()=>{if(drag){setDrag(null);setOver(null)}};
  const card=(x,bk,idx)=><div key={x.id}
    ref={node=>{if(node)cardRefs.current[x.id]=node;else delete cardRefs.current[x.id]}}
-   draggable
-   onDragStart={()=>onDragStart(x.id,bk,idx)}
+   data-nnl-card="1" data-dragging={drag?.id===x.id?'1':'0'}
+   draggable={!published}
+   onDragStart={e=>onDragStart(e,x.id,bk,idx)}
    onDragEnd={onDragEndCancel}
-   onDragOver={e=>onCardDragOver(e,bk,idx)}
-   onDrop={e=>onDropAt(e,bk,idx)}
    onClick={()=>open(x)}
-   style={{background:'#fff',border:`1px solid ${color(x.status)}`,borderLeft:`4px solid ${color(x.status)}`,borderRadius:7,padding:'10px 11px',marginBottom:8,cursor:'grab',boxShadow:'0 1px 2px rgba(20,35,50,.06)',animation:landed?.id===x.id?'nnlDrop .42s ease':'none'}}>
+   style={{background:'#fff',border:`1px solid ${color(x.status)}`,borderLeft:`4px solid ${color(x.status)}`,borderRadius:7,padding:'10px 11px',marginBottom:8,cursor:published?'pointer':'grab',boxShadow:'0 1px 2px rgba(20,35,50,.06)',animation:landed?.id===x.id?'nnlDrop .42s ease':'none'}}>
   <strong style={{display:'block',fontSize:12,lineHeight:1.3,color:nativeToPillar(x)?'#223746':'#5f707b',fontWeight:nativeToPillar(x)?700:400}}>{x.title}{x.originSuffix&&<em> {x.originSuffix}</em>}</strong>
   <span style={{display:'block',fontSize:10,color:'#657887',marginTop:3}}>{x.number} · {fmt(x.start)} → {fmt(x.end)}</span>
   <div style={{display:'flex',gap:6,alignItems:'center',marginTop:8,flexWrap:'wrap'}}>
@@ -179,15 +199,11 @@ function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=f
    {x.manager&&<span style={{fontSize:9,color:'#748590'}}>{x.manager}</span>}
   </div>
  </div>;
- const spacer=key=><div key={key} style={{height:64,marginBottom:8,border:'2px dashed #b9c6ce',borderRadius:7,background:'#eef2f4'}}/>;
+ const dropIndicator=(bk,idx)=>drag&&over?.bucket===bk&&over?.index===idx?<div key={`drop-${bk}-${idx}`} className="nnl-drop-indicator"><span>Drop at position {idx+1}</span></div>:null;
  const bucketNodes=b=>{
-  let visible=visibleFor(b.key);
-  let nodes=[];
-  visible.forEach((x,i)=>{
-   if(drag&&over&&over.bucket===b.key&&over.index===i)nodes.push(spacer(`gap-${b.key}-${i}`));
-   nodes.push(card(x,b.key,i));
-  });
-  if(drag&&over&&over.bucket===b.key&&over.index===visible.length)nodes.push(spacer(`gap-${b.key}-end`));
+  let visible=visibleFor(b.key),nodes=[];
+  visible.forEach((x,i)=>{nodes.push(dropIndicator(b.key,i));nodes.push(card(x,b.key,i))});
+  nodes.push(dropIndicator(b.key,visible.length));
   return nodes;
  };
  const toggle=<div style={{display:'flex',gap:8,alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',marginBottom:16}}>
@@ -206,6 +222,7 @@ function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=f
    {pillars.map(p=><button key={p} onClick={()=>setPillar(p)} style={{border:'1px solid #c7d3dc',borderRadius:999,padding:'7px 14px',cursor:'pointer',fontWeight:600,fontSize:12,background:p===pillar?'#294f68':'#fff',color:p===pillar?'#fff':'#526b7a'}}>{p}</button>)}
    {copyLink&&<button onClick={()=>copyLink(pillar)} style={{border:'1px solid #cbd5dc',background:'#fff',borderRadius:999,padding:'7px 14px',cursor:'pointer',fontSize:11,color:'#294f68',fontWeight:600}}>Copy Published Link</button>}
   </div>}
+  <div style={{display:'flex',justifyContent:'flex-end',marginTop:-42,marginBottom:15,pointerEvents:'none'}}><span className={`nnl-save-state ${saveState==='Save failed'?'is-error':''}`}>{saveState}</span></div>
   {toggle}
   <div style={{overflow:'auto',flex:'1 1 auto',minHeight:0,display:'grid',gridTemplateColumns:'repeat(3,minmax(260px,1fr))',gap:16}}>
    {renderBuckets.map(b=><div key={b.key} style={{display:'flex',flexDirection:'column',minHeight:0,background:'#fff',border:'1px solid #dce3e8',borderRadius:10,overflow:'hidden'}}>
@@ -216,9 +233,9 @@ function NowNextLaterBoard({data,cfg,pillars,initialPillar,back,open,published=f
      </div>
      <small style={{color:'#72828d',fontSize:11}}>{b.sub}</small>
     </div>
-    <div onDragOver={e=>onContainerDragOver(e,b.key,visibleFor(b.key).length)} onDrop={e=>onDropAt(e,b.key,visibleFor(b.key).length)} style={{padding:12,overflow:'auto',flex:'1 1 auto',minHeight:120}}>
+    <div className="nnl-drop-column" onDragOver={e=>onColumnDragOver(e,b.key)} onDrop={e=>onColumnDrop(e,b.key)} style={{padding:12,overflow:'auto',flex:'1 1 auto',minHeight:120}}>
      {bucketNodes(b)}
-     {b.items.length===0&&<div onDragOver={e=>onContainerDragOver(e,b.key,0)} onDrop={e=>onDropAt(e,b.key,0)} style={{border:'1px dashed #dce3e8',borderRadius:7,padding:'18px 10px',textAlign:'center',color:'#9aa6ae',fontSize:12}}>Drop here</div>}
+     {b.items.length===0&&<div style={{border:'1px dashed #dce3e8',borderRadius:7,padding:'18px 10px',textAlign:'center',color:'#9aa6ae',fontSize:12}}>{published?'No items':'Drop here'}</div>}
     </div>
    </div>)}
   </div>
