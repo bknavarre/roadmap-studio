@@ -9,8 +9,6 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
-// SIS Roadmap Studio Firebase web app configuration.
-// These values identify the project; access is controlled by Firebase Authentication.
 const firebaseConfig = {
   apiKey: 'AIzaSyBupAhajrgIqoLwhWxIHQm2KPsbOeRsslY',
   authDomain: 'sis-roadmap-studio.firebaseapp.com',
@@ -26,6 +24,4 @@ export const db = getFirestore(app);
 export const enableLocalAuth = () => setPersistence(auth, browserLocalPersistence);
 export const loginWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
 export const logout = () => firebaseSignOut(auth);
-export { onAuthStateChanged };
-
-export { doc, onSnapshot, setDoc, serverTimestamp };
+export { onAuthStateChanged, doc, onSnapshot, setDoc, serverTimestamp };

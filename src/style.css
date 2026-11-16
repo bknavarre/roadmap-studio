@@ -35,3 +35,6 @@ nav{display:grid;grid-template-columns:repeat(3,1fr);width:100%}nav button{justi
 
 /* Spark director edit-link mode */
 .nnl-editor-banner{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:8px 12px;border:1px solid #b9cbd6;border-radius:8px;background:#eaf1f5;color:#294f68;font-size:11px}.nnl-editor-banner strong{white-space:nowrap}.nnl-editor-banner span{color:#617684}
+
+/* Shared admin settings status */
+.config-sync{margin-left:auto;font-size:10px;color:#537081;background:#eef4f7;border:1px solid #d4e0e6;border-radius:999px;padding:4px 9px;white-space:nowrap}.config-sync.is-error{color:#9a4343;background:#fff1f1;border-color:#edcccc}.config-sync+.auth-user{margin-left:0}
