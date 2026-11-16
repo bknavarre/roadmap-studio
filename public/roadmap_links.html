@@ -3,13 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Roadmap Studio Link Directory</title>
 
 <style>
+:root {
+  --navy: #294f68;
+  --blue: #5d8198;
+  --blue-soft: #eef4f7;
+  --border: #dce3e8;
+  --text: #1e293b;
+  --muted: #64748b;
+  --background: #f5f7f9;
+
+  --edit-text: #7c3d12;
+  --edit-bg: #fff7ed;
+  --edit-border: #fed7aa;
+
+  --success: #287a4d;
+  --success-bg: #edf8f1;
+  --success-border: #b9dfc8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background: #f5f7f9;
-  color: #1e293b;
+  background: var(--background);
+  color: var(--text);
   margin: 0;
   padding: 28px;
 }
@@ -20,19 +43,28 @@ main {
 }
 
 h1 {
-  margin-bottom: 6px;
+  margin: 0 0 6px;
+  color: #172033;
 }
 
-p {
-  color: #64748b;
+.intro {
+  color: var(--muted);
+  margin: 0 0 22px;
+  line-height: 1.5;
 }
 
 section {
-  background: white;
-  border: 1px solid #dce3e8;
+  background: #fff;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 18px;
   margin: 18px 0;
+}
+
+section h2 {
+  margin: 0 0 14px;
+  color: #172033;
+  font-size: 20px;
 }
 
 table {
@@ -45,53 +77,114 @@ td {
   text-align: left;
   padding: 10px;
   border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
 }
 
 th {
   background: #f8fafc;
+  color: #536174;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-a {
-  color: #0369a1;
+td:first-child {
   font-weight: 600;
-  text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+tbody tr:last-child td {
+  border-bottom: 0;
 }
 
-.edit-link {
-  color: #7c3d12;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  border-radius: 6px;
-  padding: 5px 8px;
-  display: inline-block;
+.copy-btn {
+  appearance: none;
+  border: 1px solid #b9cbd6;
+  background: var(--blue-soft);
+  color: var(--navy);
+  border-radius: 7px;
+  padding: 7px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    transform 80ms ease;
 }
 
-@media (max-width: 650px) {
+.copy-btn:hover {
+  background: #e2ebf0;
+  border-color: #91aebb;
+}
+
+.copy-btn:active {
+  transform: translateY(1px);
+}
+
+/* Director-edit links stay visually distinct */
+.copy-btn.edit-btn {
+  color: var(--edit-text);
+  background: var(--edit-bg);
+  border-color: var(--edit-border);
+}
+
+.copy-btn.edit-btn:hover {
+  background: #ffedd5;
+  border-color: #fdba74;
+}
+
+/* Temporary confirmation after copying */
+.copy-btn.copied {
+  color: var(--success);
+  background: var(--success-bg);
+  border-color: var(--success-border);
+}
+
+.copy-btn.copy-error {
+  color: #9a4343;
+  background: #fff1f1;
+  border-color: #edcccc;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 11px;
+  margin: -4px 0 14px;
+}
+
+@media (max-width: 700px) {
   body {
+    padding: 12px;
+  }
+
+  section {
     padding: 12px;
   }
 
   th,
   td {
     padding: 8px;
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .copy-btn {
+    white-space: normal;
   }
 }
 </style>
 </head>
 
 <body>
+
 <main>
 
 <h1>Roadmap Studio Link Directory</h1>
 
-<p>
-Published view-only links for roadmap pages, plus director-edit links for NNL.
-Swimlanes open in FY mode; viewers can switch modes inside the view.
+<p class="intro">
+  Copy published Roadmap Studio links for sharing in Teams, email, or other communications.
+  Standard links are view-only. NNL Director Edit links allow the recipient to rearrange
+  that pillar's Now / Next / Later board.
 </p>
 
 <div id="directory"></div>
@@ -99,7 +192,20 @@ Swimlanes open in FY mode; viewers can switch modes inside the view.
 </main>
 
 <script>
+
+/* =========================================================
+   ROADMAP STUDIO LINK DIRECTORY
+
+   Edit the lists below when a Campus, Pillar, or FC changes.
+   All URLs and copy buttons are generated automatically.
+   ========================================================= */
+
 const base = "https://bknavarre.github.io/roadmap-studio/";
+
+
+/* =========================
+   PILLARS
+   ========================= */
 
 const pillars = [
   "ARDC",
@@ -115,6 +221,11 @@ const pillars = [
   "SWIS",
   "SYSOPS"
 ];
+
+
+/* =========================
+   CAMPUSES
+   ========================= */
 
 const campuses = [
   "SFA",
@@ -136,6 +247,11 @@ const campuses = [
   "UTSWMCD",
   "UTT"
 ];
+
+
+/* =========================
+   FUNCTIONAL COMMITTEES
+   ========================= */
 
 const functionalCommittees = [
   "ABSENCE MANAGEMENT",
@@ -164,7 +280,13 @@ const functionalCommittees = [
   "TREASURY"
 ];
 
+
+/* =========================================================
+   URL BUILDER
+   ========================================================= */
+
 function makeUrl(view, name, display, extra = {}) {
+
   const url = new URL(base);
 
   url.searchParams.set("view", view);
@@ -179,110 +301,13 @@ function makeUrl(view, name, display, extra = {}) {
   return url.toString();
 }
 
-function link(text, url, className = "") {
-  return `
-    <a
-      href="${url}"
-      target="_blank"
-      rel="noopener noreferrer"
-      ${className ? `class="${className}"` : ""}
-    >
-      ${text}
-    </a>
-  `;
-}
 
-function standardSection(title, firstColumn, view, names) {
-  const rows = names.map(name => `
-    <tr>
-      <td>${escapeHtml(name)}</td>
-
-      <td>
-        ${link(
-          "Open Roadmap",
-          makeUrl(view, name, "timeline")
-        )}
-      </td>
-
-      <td>
-        ${link(
-          "Open Swimlane",
-          makeUrl(view, name, "swimlane", { mode: "FY" })
-        )}
-      </td>
-    </tr>
-  `).join("");
-
-  return `
-    <section>
-      <h2>${title}</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>${firstColumn}</th>
-            <th>Roadmap</th>
-            <th>Swimlane</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${rows}
-        </tbody>
-      </table>
-    </section>
-  `;
-}
-
-function nnlSection() {
-  const rows = pillars.map(name => `
-    <tr>
-      <td>${escapeHtml(name)}</td>
-
-      <td>
-        ${link(
-          "Open NNL",
-          makeUrl("pillar", name, "nnl")
-        )}
-      </td>
-
-      <td>
-        ${link(
-          "Open Editor",
-          makeUrl(
-            "pillar",
-            name,
-            "nnl",
-            { edit: "1" }
-          ),
-          "edit-link"
-        )}
-      </td>
-    </tr>
-  `).join("");
-
-  return `
-    <section>
-      <h2>NNL Pages</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Pillar</th>
-            <th>View</th>
-            <th>Director Edit</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${rows}
-        </tbody>
-      </table>
-    </section>
-  `;
-}
+/* =========================================================
+   HTML ESCAPING
+   ========================================================= */
 
 function escapeHtml(value) {
+
   return value
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -291,29 +316,337 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+
+/* =========================================================
+   BUTTON GENERATOR
+   ========================================================= */
+
+function copyButton(label, url, edit = false) {
+
+  const encodedUrl = encodeURIComponent(url);
+
+  return `
+    <button
+      type="button"
+      class="copy-btn${edit ? " edit-btn" : ""}"
+      data-url="${encodedUrl}"
+      data-label="${escapeHtml(label)}"
+      onclick="copyRoadmapLink(this)"
+    >
+      ${escapeHtml(label)}
+    </button>
+  `;
+}
+
+
+/* =========================================================
+   COPY TO CLIPBOARD
+   ========================================================= */
+
+async function copyRoadmapLink(button) {
+
+  const url = decodeURIComponent(button.dataset.url);
+
+  const originalLabel =
+    button.dataset.label ||
+    button.textContent.trim();
+
+  try {
+
+    await navigator.clipboard.writeText(url);
+
+    showCopied(button, originalLabel);
+
+  } catch (error) {
+
+    /*
+      Clipboard API fallback.
+
+      This handles browsers or security contexts that
+      prevent navigator.clipboard.writeText().
+    */
+
+    const textArea = document.createElement("textarea");
+
+    textArea.value = url;
+    textArea.setAttribute("readonly", "");
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+
+    document.body.appendChild(textArea);
+
+    textArea.select();
+    textArea.setSelectionRange(0, url.length);
+
+    try {
+
+      const copied = document.execCommand("copy");
+
+      if (!copied) {
+        throw new Error("Copy command failed");
+      }
+
+      showCopied(button, originalLabel);
+
+    } catch (fallbackError) {
+
+      console.error(
+        "Unable to copy Roadmap Studio link",
+        fallbackError
+      );
+
+      button.textContent = "Copy failed";
+      button.classList.add("copy-error");
+
+      setTimeout(() => {
+
+        button.textContent = originalLabel;
+        button.classList.remove("copy-error");
+
+      }, 1800);
+
+    } finally {
+
+      document.body.removeChild(textArea);
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   COPIED CONFIRMATION
+   ========================================================= */
+
+function showCopied(button, originalLabel) {
+
+  button.textContent = "✓ Copied!";
+  button.classList.add("copied");
+
+  setTimeout(() => {
+
+    button.textContent = originalLabel;
+    button.classList.remove("copied");
+
+  }, 1400);
+
+}
+
+
+/* =========================================================
+   STANDARD DIRECTORY SECTION
+   ========================================================= */
+
+function standardSection(
+  title,
+  firstColumn,
+  view,
+  names
+) {
+
+  const rows = names.map(name => {
+
+    const roadmapUrl = makeUrl(
+      view,
+      name,
+      "timeline"
+    );
+
+    const swimlaneUrl = makeUrl(
+      view,
+      name,
+      "swimlane",
+      {
+        mode: "FY"
+      }
+    );
+
+    return `
+      <tr>
+
+        <td>
+          ${escapeHtml(name)}
+        </td>
+
+        <td>
+          ${copyButton(
+            "Copy Roadmap Link",
+            roadmapUrl
+          )}
+        </td>
+
+        <td>
+          ${copyButton(
+            "Copy Swimlane Link",
+            swimlaneUrl
+          )}
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
+
+
+  return `
+
+    <section>
+
+      <h2>${title}</h2>
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>${firstColumn}</th>
+            <th>Roadmap</th>
+            <th>Swimlane</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          ${rows}
+        </tbody>
+
+      </table>
+
+    </section>
+
+  `;
+
+}
+
+
+/* =========================================================
+   NNL DIRECTORY SECTION
+   ========================================================= */
+
+function nnlSection() {
+
+  const rows = pillars.map(name => {
+
+    const viewUrl = makeUrl(
+      "pillar",
+      name,
+      "nnl"
+    );
+
+    const editUrl = makeUrl(
+      "pillar",
+      name,
+      "nnl",
+      {
+        edit: "1"
+      }
+    );
+
+    return `
+
+      <tr>
+
+        <td>
+          ${escapeHtml(name)}
+        </td>
+
+        <td>
+          ${copyButton(
+            "Copy NNL Link",
+            viewUrl
+          )}
+        </td>
+
+        <td>
+          ${copyButton(
+            "Copy Director Edit Link",
+            editUrl,
+            true
+          )}
+        </td>
+
+      </tr>
+
+    `;
+
+  }).join("");
+
+
+  return `
+
+    <section>
+
+      <h2>NNL Pages</h2>
+
+      <p class="note">
+        NNL View links are read-only.
+        Director Edit links allow changes to the shared NNL board.
+      </p>
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Pillar</th>
+            <th>View Only</th>
+            <th>Director Edit</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          ${rows}
+        </tbody>
+
+      </table>
+
+    </section>
+
+  `;
+
+}
+
+
+/* =========================================================
+   BUILD DIRECTORY
+
+   NNL intentionally stays at the bottom.
+   ========================================================= */
+
 document.getElementById("directory").innerHTML =
+
   standardSection(
     "Pillar Pages",
     "Pillar",
     "pillar",
     pillars
-  ) +
+  )
+
+  +
 
   standardSection(
     "Campus Pages",
     "Campus",
     "campus",
     campuses
-  ) +
+  )
+
+  +
 
   standardSection(
     "FC Pages",
     "Functional Committee",
     "fc",
     functionalCommittees
-  ) +
+  )
+
+  +
 
   nnlSection();
+
 </script>
 
 </body>
