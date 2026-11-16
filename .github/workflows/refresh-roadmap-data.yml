@@ -115,7 +115,7 @@ jobs:
           cache: npm
 
       - name: Install web dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Roadmap Studio
         run: npm run build
