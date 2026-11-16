@@ -1,141 +1,40 @@
 {
-  "lastSuccessfulRefresh": "2026-11-16T12:02:43.823263+00:00",
+  "lastSuccessfulRefresh": "2026-11-16T13:02:44.071122+00:00",
   "sourceRecords": 455,
   "roadmapLines": 593,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 339,
-      "modifiedUtc": "2026-11-16T12:02:32.390875+00:00"
+      "modifiedUtc": "2026-11-16T13:02:30.675398+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 47,
-      "modifiedUtc": "2026-11-16T12:02:32.390629+00:00"
+      "modifiedUtc": "2026-11-16T13:02:30.675050+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 50,
-      "modifiedUtc": "2026-11-16T12:02:32.390875+00:00"
+      "modifiedUtc": "2026-11-16T13:02:30.675398+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-16T12:02:32.390875+00:00"
+      "modifiedUtc": "2026-11-16T13:02:30.675398+00:00"
     }
   },
   "changes": {
-    "new": 2,
-    "updated": 23,
+    "new": 0,
+    "updated": 0,
     "deleted": 0
   },
   "changeRecords": {
-    "new": [
-      "DMND0001483",
-      "ENHC0011146"
-    ],
-    "updated": [
-      "DMND0001439",
-      "PRJ0011922",
-      "PRJ0020133",
-      "PRJ0024050",
-      "PRJ0024261",
-      "PRJ0024703",
-      "PRJ0026464",
-      "PRJ0027136",
-      "PRJ0028206",
-      "PRJ0028293",
-      "PRJ0029655",
-      "PRJ0030022",
-      "PRJ0030498",
-      "PRJ0030722",
-      "PRJ0030727",
-      "PRJ0030919",
-      "PRJ0031100",
-      "PRJ0031772",
-      "PRJ0032823",
-      "PRJ0032829",
-      "PRJ0032840",
-      "PRJ0033427",
-      "PRJ0037563"
-    ],
+    "new": [],
+    "updated": [],
     "deleted": []
   },
-  "changeDetails": {
-    "status": 21,
-    "dates": 1,
-    "title/type": 1
-  },
-  "updatedFieldsByProject": {
-    "DMND0001439": [
-      "title"
-    ],
-    "PRJ0011922": [
-      "progress"
-    ],
-    "PRJ0020133": [
-      "progress"
-    ],
-    "PRJ0024050": [
-      "progress"
-    ],
-    "PRJ0024261": [
-      "progress"
-    ],
-    "PRJ0024703": [
-      "progress"
-    ],
-    "PRJ0026464": [
-      "progress"
-    ],
-    "PRJ0027136": [
-      "progress"
-    ],
-    "PRJ0028206": [
-      "progress"
-    ],
-    "PRJ0028293": [
-      "progress"
-    ],
-    "PRJ0029655": [
-      "progress"
-    ],
-    "PRJ0030022": [
-      "progress"
-    ],
-    "PRJ0030498": [
-      "progress"
-    ],
-    "PRJ0030722": [
-      "progress"
-    ],
-    "PRJ0030727": [
-      "progress"
-    ],
-    "PRJ0030919": [
-      "progress"
-    ],
-    "PRJ0031100": [
-      "progress"
-    ],
-    "PRJ0031772": [
-      "progress"
-    ],
-    "PRJ0032823": [
-      "progress"
-    ],
-    "PRJ0032829": [
-      "progress"
-    ],
-    "PRJ0032840": [
-      "progress"
-    ],
-    "PRJ0033427": [
-      "progress"
-    ],
-    "PRJ0037563": [
-      "start"
-    ]
-  },
+  "changeDetails": {},
+  "updatedFieldsByProject": {},
   "changeCounting": "unique ServiceNow records (number), not expanded roadmap lines"
 }
