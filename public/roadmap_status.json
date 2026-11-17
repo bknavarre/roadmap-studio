@@ -1,38 +1,36 @@
 {
-  "lastSuccessfulRefresh": "2026-11-16T23:01:19.476034+00:00",
+  "lastSuccessfulRefresh": "2026-11-17T00:01:42.078027+00:00",
   "sourceRecords": 458,
   "roadmapLines": 596,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 340,
-      "modifiedUtc": "2026-11-16T23:01:09.382561+00:00"
+      "modifiedUtc": "2026-11-17T00:01:30.443161+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 47,
-      "modifiedUtc": "2026-11-16T23:01:09.382250+00:00"
+      "modifiedUtc": "2026-11-17T00:01:30.442869+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 52,
-      "modifiedUtc": "2026-11-16T23:01:09.382561+00:00"
+      "modifiedUtc": "2026-11-17T00:01:30.443161+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 19,
-      "modifiedUtc": "2026-11-16T23:01:09.382561+00:00"
+      "modifiedUtc": "2026-11-17T00:01:30.443161+00:00"
     }
   },
   "changes": {
-    "new": 1,
+    "new": 0,
     "updated": 2,
     "deleted": 0
   },
   "changeRecords": {
-    "new": [
-      "ENHC0011147"
-    ],
+    "new": [],
     "updated": [
       "PRJ0032823",
       "PRJ0032840"
