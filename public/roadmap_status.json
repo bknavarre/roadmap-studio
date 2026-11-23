@@ -1,40 +1,48 @@
 {
-  "lastSuccessfulRefresh": "2026-11-23T13:01:43.497574+00:00",
+  "lastSuccessfulRefresh": "2026-11-23T14:02:17.634246+00:00",
   "sourceRecords": 461,
   "roadmapLines": 592,
   "sources": {
     "Project": {
       "file": "PMO Daily Roadmunk - Projects.xlsx",
       "rows": 339,
-      "modifiedUtc": "2026-11-23T13:01:33.431744+00:00"
+      "modifiedUtc": "2026-11-23T14:02:05.965605+00:00"
     },
     "Demand": {
       "file": "PMO Daily Roadmunk - Demands.xlsx",
       "rows": 49,
-      "modifiedUtc": "2026-11-23T13:01:33.431432+00:00"
+      "modifiedUtc": "2026-11-23T14:02:05.965274+00:00"
     },
     "Enhancement": {
       "file": "PMO Daily Roadmunk - Enhancements.xlsx",
       "rows": 53,
-      "modifiedUtc": "2026-11-23T13:01:33.431744+00:00"
+      "modifiedUtc": "2026-11-23T14:02:05.965605+00:00"
     },
     "Idea": {
       "file": "PMO Daily Roadmunk - Ideas.xlsx",
       "rows": 20,
-      "modifiedUtc": "2026-11-23T13:01:33.431744+00:00"
+      "modifiedUtc": "2026-11-23T14:02:05.965605+00:00"
     }
   },
   "changes": {
     "new": 0,
-    "updated": 0,
+    "updated": 1,
     "deleted": 0
   },
   "changeRecords": {
     "new": [],
-    "updated": [],
+    "updated": [
+      "PRJ0032833"
+    ],
     "deleted": []
   },
-  "changeDetails": {},
-  "updatedFieldsByProject": {},
+  "changeDetails": {
+    "status": 1
+  },
+  "updatedFieldsByProject": {
+    "PRJ0032833": [
+      "progress"
+    ]
+  },
   "changeCounting": "unique ServiceNow records (number), not expanded roadmap lines"
 }
