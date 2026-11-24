@@ -127,6 +127,9 @@ jobs:
         with:
           path: ./dist
 
+      - name: Wait for Pages artifact registration
+        run: sleep 15
+
       - name: Deploy Roadmap Studio to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
